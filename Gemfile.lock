@@ -72,7 +72,6 @@ GEM
     hpricot (0.8.6)
     i18n (0.6.9)
     jsmin (1.0.1)
-    kgio (2.8.1)
     method_source (0.8.2)
     mime-types (2.0)
     mini_portile (0.5.2)
@@ -89,6 +88,8 @@ GEM
     pry-byebug (1.2.1)
       byebug (~> 2.2)
       pry (~> 0.9.12)
+    puma (2.7.1)
+      rack (>= 1.1, < 2.0)
     rack (1.5.2)
     rack-protection (1.5.1)
       rack
@@ -97,7 +98,6 @@ GEM
     racksh (1.0.0)
       rack (>= 1.0)
       rack-test (>= 0.5)
-    raindrops (0.12.0)
     rake (10.1.1)
     rendezvous (0.0.2)
     rest-client (1.6.7)
@@ -154,10 +154,6 @@ GEM
     tilt (1.4.1)
     tins (0.13.1)
     tzinfo (0.3.38)
-    unicorn (4.7.0)
-      kgio (~> 2.6)
-      rack
-      raindrops (~> 0.7)
     will_paginate (3.0.5)
 
 PLATFORMS
@@ -183,6 +179,7 @@ DEPENDENCIES
   nokogiri (~> 1.6)
   pg (~> 0.17.1)
   pry-byebug (~> 1.2)
+  puma (~> 2.7, >= 2.7.1)
   rack-test (~> 0.6.2)
   racksh (~> 1.0)
   rake (~> 10.1, >= 10.1.1)
@@ -197,5 +194,4 @@ DEPENDENCIES
   sinatra-flash (~> 0.3.0)
   sqlite3 (~> 1.3, >= 1.3.8)
   thread (~> 0.1.3)
-  unicorn (~> 4.7)
   will_paginate (~> 3.0, >= 3.0.5)
