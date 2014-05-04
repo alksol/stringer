@@ -157,6 +157,7 @@ DEPENDENCIES
   activerecord (~> 4.1)
   arel (~> 5.0.1)
   bcrypt-ruby (~> 3.1.5)
+  bundler (>= 1.6.2)
   coveralls (~> 0.7)
   delayed_job (~> 4.0)
   delayed_job_active_record (~> 4.0)
