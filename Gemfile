@@ -1,6 +1,5 @@
 ruby "2.1.1"
 source "https://rubygems.org"
-gem "bundler", ">= 1.6.2"
 
 group :production do
   gem "pg", "~> 0.17.1"
@@ -8,7 +7,7 @@ group :production do
 end
 
 group :development do
-  gem "sqlite3", ">= 1.3", ">= 1.3.9"
+  gem "sqlite3", "~> 1.3", ">= 1.3.9"
 end
 
 group :development, :test do
@@ -17,7 +16,7 @@ group :development, :test do
   gem "foreman", "~> 0.67.0"
   gem "pry-byebug", "~> 1.3", ">= 1.3.2"
   gem "rack-test", "~> 0.6.2"
-  gem "rspec", ">= 2.14", ">= 2.14.1"
+  gem "rspec", "~> 2.14", ">= 2.14.1"
   gem "rspec-html-matchers", "~> 0.5"
   gem "shotgun", "~> 0.9"
 end
@@ -36,7 +35,7 @@ gem "delayed_job", "~> 4.0"
 gem "delayed_job_active_record", "~> 4.0"
 gem "feedbag", "~> 0.9.2"
 gem "feedjira", "~> 1.2.0"
-gem "highline", ">= 1.6", ">= 1.6.21", require: false
+gem "highline", "~> 1.6", ">= 1.6.21", require: false
 gem "i18n", "~> 0.6.9"
 gem "loofah", github: "swanson/loofah"
 gem "nokogiri", "~> 1.6"
