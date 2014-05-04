@@ -63,7 +63,7 @@ en:
     import: Import
     logout: Logout
     support: Support
-    title: stringer | your rss buddy
+    title: AlkaliNews
   partials:
     action_bar:
       add_feed: Add a feed
