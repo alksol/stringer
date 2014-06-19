@@ -4,6 +4,7 @@ source "https://rubygems.org"
 group :production do
   gem "pg", "~> 0.17.1"
   gem "puma", "~> 2.8", ">= 2.8.2"
+  gem "rack-ssl-enforcer"
 end
 
 group :development do
