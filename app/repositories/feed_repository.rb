@@ -11,6 +11,11 @@ class FeedRepository
     Feed.where(id: ids)
   end
 
+  def self.update_url(feed, url)
+    feed.url = url
+    feed.save
+  end
+
   def self.update_last_fetched(feed, timestamp)
     if self.valid_timestamp?(timestamp, feed.last_fetched)
       feed.last_fetched = timestamp
@@ -29,6 +34,10 @@ class FeedRepository
 
   def self.list
     Feed.order('lower(name)')
+  end
+
+  def self.in_group
+    Feed.where('group_id IS NOT NULL')
   end
 
   private
