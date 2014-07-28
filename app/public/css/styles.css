@@ -15,6 +15,10 @@ hr {
   margin: 20px auto;
 }
 
+code {
+  white-space: normal;
+}
+
 .container {
   width: 100%;
   max-width: 720px;
@@ -130,6 +134,10 @@ a.btn, a.btn:hover {
 
 li.story.read {
   opacity: 0.5;
+}
+
+li.story.keepUnread .story-preview {
+  font-weight: bold;
 }
 
 li.story.open {
@@ -477,7 +485,7 @@ li.feed .remove-feed a:hover {
   transition: 0.25s;
 }
 
-.setup #password, .setup #password-confirmation, .setup #feed-url {
+.setup #password, .setup #password-confirmation, .setup #feed-url, .setup #feed-name {
   padding-left: 100px;
   padding-right: 36px;
 }
