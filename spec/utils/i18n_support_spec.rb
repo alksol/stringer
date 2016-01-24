@@ -21,7 +21,7 @@ describe "i18n" do
 
     it "should load default locale" do
       I18n.locale.to_s.should eq "en"
-      I18n.t("layout.title").should eq "stringer | your rss buddy"
+      I18n.t("layout.title").should eq "AlkaliNews"
     end
   end
 
