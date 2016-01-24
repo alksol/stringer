@@ -1,16 +1,21 @@
+require_relative "../helpers/url_helpers"
 require_relative "../models/story"
 require_relative "../utils/sample_story"
 
 class StoryRepository
+  extend UrlHelpers
+
   def self.add(entry, feed)
+    entry.url = normalize_url(entry.url, feed.url)
+
     Story.create(feed: feed,
-                title: entry.title,
-                permalink: entry.url,
-                body: extract_content(entry),
-                is_read: false,
-                is_starred: false,
-                published: entry.published || Time.now,
-                entry_id: entry.id)
+                 title: sanitize(entry.title),
+                 permalink: entry.url,
+                 body: extract_content(entry),
+                 is_read: false,
+                 is_starred: false,
+                 published: entry.published || Time.now,
+                 entry_id: entry.id)
   end
 
   def self.fetch(id)
@@ -23,7 +28,7 @@ class StoryRepository
 
   def self.fetch_unread_by_timestamp(timestamp)
     timestamp = Time.at(timestamp.to_i)
-    Story.where('stories.created_at < ?', timestamp).where(is_read: false)
+    Story.where("stories.created_at < ?", timestamp).where(is_read: false)
   end
 
   def self.fetch_unread_by_timestamp_and_group(timestamp, group_id)
@@ -39,16 +44,20 @@ class StoryRepository
     story.save
   end
 
+  def self.exists?(id, feed_id)
+    Story.exists?(entry_id: id, feed_id: feed_id)
+  end
+
   def self.unread
     Story.where(is_read: false).order("published desc").includes(:feed)
   end
 
   def self.unread_since_id(since_id)
-    unread.where('id > ?', since_id)
+    unread.where("id > ?", since_id)
   end
 
   def self.feed(feed_id)
-    Story.where('feed_id = ?', feed_id).order("published desc").includes(:feed)
+    Story.where("feed_id = ?", feed_id).order("published desc").includes(:feed)
   end
 
   def self.read(page = 1)
@@ -58,7 +67,7 @@ class StoryRepository
 
   def self.starred(page = 1)
     Story.where(is_starred: true).includes(:feed)
-          .order("published desc").page(page).per_page(20)
+      .order("published desc").page(page).per_page(20)
   end
 
   def self.all_starred
@@ -67,7 +76,7 @@ class StoryRepository
 
   def self.unstarred_read_stories_older_than(num_days)
     Story.where(is_read: true, is_starred: false)
-      .where('published <= ?', num_days.days.ago)
+      .where("published <= ?", num_days.days.ago)
   end
 
   def self.read_count
@@ -88,25 +97,9 @@ class StoryRepository
 
   def self.sanitize(content)
     Loofah.fragment(content.gsub(/<wbr\s*>/i, ""))
-          .scrub!(:prune)
-          .scrub!(:unprintable)
-          .to_s
-  end
-
-  def self.expand_absolute_urls(content, base_url)
-    doc = Nokogiri::HTML.fragment(content)
-    abs_re = URI::DEFAULT_PARSER.regexp[:ABS_URI]
-
-    [["a", "href"], ["img", "src"], ["video", "src"]].each do |tag, attr|
-      doc.css("#{tag}[#{attr}]").each do |node|
-        url = node.get_attribute(attr)
-        unless url =~ abs_re
-          node.set_attribute(attr, URI.join(base_url, url).to_s)
-        end
-      end
-    end
-
-    doc.to_html
+      .scrub!(:prune)
+      .scrub!(:unprintable)
+      .to_s
   end
 
   def self.samples
@@ -117,4 +110,3 @@ class StoryRepository
     ]
   end
 end
-

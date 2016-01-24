@@ -96,6 +96,7 @@ zh-CN:
     shortcuts:
       keys:
         a: 添加新订阅
+        bv: 转到原网址
         f: 
         jk: 下一个/上一个故事
         left: 上一页
@@ -107,7 +108,6 @@ zh-CN:
         right: 下一页
         s: 将条目标为加注星标/取消星标
         shifta: 全部标为已读
-        v: 转到原网址
       title: 快捷键
     zen:
       archive: 查看所有故事
@@ -142,6 +142,9 @@ zh-CN:
     as_read: 已读
     click_to_read: （点击阅读）
     description: 我们正在努力的加载您订阅的内容，请稍等。
+    heroku_hourly_task: 
+    heroku_one_more_thing: 
+    heroku_scheduler: 
     mark_all: 全部标为
     ready: 好了，我想你已经准备好了~
     refresh: 刷新

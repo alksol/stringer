@@ -34,6 +34,7 @@ en:
       fields:
         feed_name: Feed Name
         feed_url: Feed URL
+        group: Group
         submit: Save
       flash:
         updated_successfully: Updated the feed for ya'!
@@ -96,6 +97,7 @@ en:
     shortcuts:
       keys:
         a: Add a feed
+        bv: Go to story URL
         f: Go to feeds page
         jk: Next/previous story
         left: Previous page
@@ -107,7 +109,6 @@ en:
         right: Next page
         s: Mark item as starred/unstarred
         shifta: Mark all as read
-        v: Go to story URL
       title: Keyboard shortcuts
     zen:
       archive: view all items
@@ -142,6 +143,9 @@ en:
     as_read: as read
     click_to_read: (click to read)
     description: We're getting you some stories to read, give us a second.
+    heroku_hourly_task: You need to add an hourly task to check for new stories.
+    heroku_one_more_thing: One more thing...
+    heroku_scheduler: Go to the Heroku Scheduler and add this task
     mark_all: mark all
     ready: Okay, it's ready!
     refresh: refresh

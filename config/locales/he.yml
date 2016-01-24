@@ -96,6 +96,7 @@ he:
     shortcuts:
       keys:
         a: 
+        bv: תעבור לקישור של הסיפור
         f: 
         jk: סיפור הבא/קודם
         left: 
@@ -107,7 +108,6 @@ he:
         right: 
         s: 
         shifta: סמן הכל כנקרא
-        v: תעבור לקישור של הסיפור
       title: קיצורי מקשים
     zen:
       archive: ראה את כל הפריטים
@@ -142,6 +142,9 @@ he:
     as_read: כנקרא
     click_to_read: (לקריאה)
     description: אנחנו מחפשים סיפורים בשבילך, תן לנו קצת זמן.
+    heroku_hourly_task: 
+    heroku_one_more_thing: 
+    heroku_scheduler: 
     mark_all: סמן הכל
     ready: יפה, הכל מוכן!
     refresh: רענון
