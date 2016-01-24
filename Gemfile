@@ -18,8 +18,8 @@ group :development, :test do
   gem "foreman", "~> 0.78.0"
   gem "pry-byebug", "~> 3.3"
   gem "rack-test", "~> 0.6.2"
-  gem "rspec", "~> 2.14", ">= 2.14.1"
-  gem "rspec-html-matchers", "~> 0.5.0"
+  gem "rspec", "~> 3.0"
+  gem "rspec-html-matchers", "> 0.5.0"
   gem "rubocop", "~> 0.36.0", require: false
   gem "shotgun", "~> 0.9"
   gem "timecop", "~> 0.8.0"
