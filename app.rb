@@ -8,6 +8,7 @@ require "json"
 require "i18n"
 require "will_paginate"
 require "will_paginate/active_record"
+require 'rack/protection'
 
 require_relative "app/helpers/authentication_helpers"
 require_relative "app/repositories/user_repository"
@@ -32,6 +33,8 @@ class Stringer < Sinatra::Base
 
     enable :sessions
     set :session_secret, ENV["SECRET_TOKEN"] || "secret!"
+    use Rack::Protection
+
     enable :logging
     enable :method_override
 

@@ -2,9 +2,6 @@ require "rubygems"
 require "bundler"
 Bundler.require
 
-require 'rack/protection'
-use Rack::Protection
-
 require "./fever_api"
 map "/fever" do
   run FeverAPI::Endpoint
