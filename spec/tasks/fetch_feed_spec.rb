@@ -11,16 +11,16 @@ describe FetchFeed do
     end
 
     before do
-      StoryRepository.stub(:add)
-      FeedRepository.stub(:update_last_fetched)
-      FeedRepository.stub(:set_status)
+      allow(StoryRepository).to receive(:add)
+      allow(FeedRepository).to receive(:update_last_fetched)
+      allow(FeedRepository).to receive(:set_status)
     end
 
     context "when feed has not been modified" do
       it "should not try to fetch posts" do
         parser = double(fetch_and_parse: 304)
 
-        StoryRepository.should_not_receive(:add)
+        expect(StoryRepository).to_not receive(:add)
 
         FetchFeed.new(daring_fireball, parser: parser)
       end
@@ -31,9 +31,9 @@ describe FetchFeed do
         fake_feed = double(last_modified: Time.new(2012, 12, 31))
         parser = double(fetch_and_parse: fake_feed)
 
-        FindNewStories.any_instance.stub(:new_stories).and_return([])
+        expect_any_instance_of(FindNewStories).to receive(:new_stories).and_return([])
 
-        StoryRepository.should_not_receive(:add)
+        expect(StoryRepository).to_not receive(:add)
 
         FetchFeed.new(daring_fireball, parser: parser).fetch
       end
@@ -47,11 +47,11 @@ describe FetchFeed do
       let(:fake_feed) { double(last_modified: now, entries: [new_story, old_story]) }
       let(:fake_parser) { double(fetch_and_parse: fake_feed) }
 
-      before { FindNewStories.any_instance.stub(:new_stories).and_return([new_story]) }
+      before { expect_any_instance_of(FindNewStories).to receive(:new_stories).and_return([new_story]) }
 
       it "should only add posts that are new" do
         expect(StoryRepository).to receive(:add).with(new_story, daring_fireball)
-        StoryRepository.should_not_receive(:add).with(old_story, daring_fireball)
+        expect(StoryRepository).to_not receive(:add).with(old_story, daring_fireball)
 
         FetchFeed.new(daring_fireball, parser: fake_parser).fetch
       end

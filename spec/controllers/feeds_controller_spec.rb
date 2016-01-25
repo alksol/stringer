@@ -147,7 +147,7 @@ describe "FeedsController" do
 
   describe "GET /feeds/export" do
     let(:some_xml) { "<xml>some dummy opml</xml>" }
-    before { Feed.stub(:all) }
+    before { expect(Feed).to receive(:all) }
 
     it "returns an OPML file" do
       expect_any_instance_of(ExportToOpml).to receive(:to_xml).and_return(some_xml)

@@ -8,8 +8,8 @@ describe FetchFeeds do
     let(:pool) { double }
 
     it "calls FetchFeed#fetch for every feed" do
-      pool.stub(:process).and_yield
-      FetchFeed.stub(:new).and_return(fetcher_one, fetcher_two)
+      expect(pool).to receive(:process).and_yield.at_least(:once)
+      expect(FetchFeed).to receive(:new).and_return(fetcher_one, fetcher_two)
 
       expect(fetcher_one).to receive(:fetch).once
       expect(fetcher_two).to receive(:fetch).once

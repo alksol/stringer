@@ -6,7 +6,7 @@ describe StoryRepository do
   describe ".add" do
     let(:feed) { double(url: "http://blog.golang.org/feed.atom") }
     before do
-      Story.stub(:create)
+      allow(Story).to receive(:create)
     end
 
     it "normalizes story urls" do
@@ -18,7 +18,7 @@ describe StoryRepository do
 
     it "sanitizes titles" do
       entry = double(title: "n\u2028\u2029", content: "").as_null_object
-      StoryRepository.stub(:normalize_url)
+      expect(StoryRepository).to receive(:normalize_url)
 
       expect(Story).to receive(:create).with(hash_including(title: "n"))
 

@@ -21,9 +21,9 @@ describe FeverAPI do
 
   before do
     user = double(api_key: api_key)
-    User.stub(:first) { user }
+    allow(User).to receive(:first).and_return(user)
 
-    Time.stub(:now) { Time.at(123456789) }
+    allow(Time).to receive(:now).and_return(Time.at(123456789))
   end
 
   def last_response_as_object
@@ -38,12 +38,12 @@ describe FeverAPI do
 
     it "does not authenticate request with incorrect api_key" do
       get "/", api_key: "foo"
-      last_response.should_not be_ok
+      expect(last_response).to_not be_ok
     end
 
     it "does not authenticate request when api_key is not provided" do
       get "/"
-      last_response.should_not be_ok
+      expect(last_response).to_not be_ok
     end
   end
 
@@ -60,8 +60,8 @@ describe FeverAPI do
     end
 
     it "returns groups and feeds by groups when 'groups' header is provided" do
-      GroupRepository.stub(:list).and_return([group])
-      FeedRepository.stub_chain(:in_group, :order).and_return([feed])
+      expect(GroupRepository).to receive(:list).and_return([group])
+      expect(FeedRepository).to receive_message_chain(:in_group, :order).and_return([feed])
 
       make_request(groups: nil)
 
@@ -74,8 +74,8 @@ describe FeverAPI do
     end
 
     it "returns feeds and feeds by groups when 'feeds' header is provided" do
-      FeedRepository.stub(:list).and_return([feed])
-      FeedRepository.stub_chain(:in_group, :order).and_return([feed])
+      expect(FeedRepository).to receive(:list).and_return([feed])
+      expect(FeedRepository).to receive_message_chain(:in_group, :order).and_return([feed])
 
       make_request(feeds: nil)
 

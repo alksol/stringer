@@ -49,8 +49,8 @@ describe("Story", function(){
     it("calls save if it should save", function(){
       var story = new Story();
 
-      sinon.stub(story, "save");
-      sinon.stub(story, "shouldSave", function(){
+      expect(sinon).to receive(story, "save");
+      expect(sinon).to receive(story, "shouldSave", function(){
         return true;
       });
 
@@ -90,8 +90,8 @@ describe("Story", function(){
   describe("toggle", function(){
     it("calles open/close based on state", function(){
       var story = new Story();
-      sinon.stub(story, "open");
-      sinon.stub(story, "close");
+      expect(sinon).to receive(story, "open");
+      expect(sinon).to receive(story, "close");
 
       story.toggle();
       story.open.should.have.been.calledOnce;
@@ -107,7 +107,7 @@ describe("Story", function(){
   describe("shouldSave", function(){
     it("returns false in there are no changed Attributes", function(){
       var story = new Story();
-      sinon.stub(story, "changedAttributes", function(){
+      expect(sinon).to receive(story, "changedAttributes", function(){
         return false;
       });
       story.shouldSave().should.be.false;
@@ -116,7 +116,7 @@ describe("Story", function(){
 
     it("returns false if it has changedAttributes but no id", function(){
       var story = new Story();
-      sinon.stub(story, "changedAttributes", function(){
+      expect(sinon).to receive(story, "changedAttributes", function(){
         return {is_read: true};
       });
       story.shouldSave().should.be.false;
@@ -125,7 +125,7 @@ describe("Story", function(){
 
     it("returns true if it has changedAttributes and an id", function(){
       var story = new Story({id: 1});
-      sinon.stub(story, "changedAttributes", function(){
+      expect(sinon).to receive(story, "changedAttributes", function(){
         return {is_read: true};
       });
       story.shouldSave().should.be.true;
@@ -136,7 +136,7 @@ describe("Story", function(){
   describe("openInTab", function(){
     it("opens a new window", function(){
       var story = new Story({permalink: "http://localhost"});
-      sinon.stub(window, "open");
+      expect(sinon).to receive(window, "open");
 
       story.openInTab();
       window.open.should.have.been.calledWith("http://localhost", "_blank");

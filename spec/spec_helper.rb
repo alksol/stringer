@@ -21,6 +21,7 @@ require "./app"
 RSpec.configure do |config|
   config.include Rack::Test::Methods
   config.include RSpecHtmlMatchers
+  config.raise_errors_for_deprecations!
 end
 
 def app_require(file)
