@@ -13,10 +13,10 @@ describe "FirstRunController" do
         get "/setup/password"
 
         page = last_response.body
-        page.should have_tag("form#password_setup")
-        page.should have_tag("input#password")
-        page.should have_tag("input#password-confirmation")
-        page.should have_tag("input#submit")
+        expect(page).to have_tag("form#password_setup")
+        expect(page).to have_tag("input#password")
+        expect(page).to have_tag("input#password-confirmation")
+        expect(page).to have_tag("input#submit")
       end
     end
 
@@ -25,14 +25,14 @@ describe "FirstRunController" do
         post "/setup/password"
 
         page = last_response.body
-        page.should have_tag("div.error")
+        expect(page).to have_tag("div.error")
       end
 
       it "rejects when password isn't confirmed" do
         post "/setup/password", password: "foo", password_confirmation: "bar"
 
         page = last_response.body
-        page.should have_tag("div.error")
+        expect(page).to have_tag("div.error")
       end
 
       it "accepts confirmed passwords and redirects to next step" do
@@ -40,7 +40,7 @@ describe "FirstRunController" do
 
         post "/setup/password", password: "foo", password_confirmation: "foo"
 
-        last_response.status.should be 302
+        expect(last_response.status).to be 302
         URI.parse(last_response.location).path.should eq "/feeds/import"
       end
     end
@@ -61,12 +61,12 @@ describe "FirstRunController" do
         get "/setup/tutorial"
 
         page = last_response.body
-        page.should have_tag("#mark-all-instruction")
-        page.should have_tag("#refresh-instruction")
-        page.should have_tag("#feeds-instruction")
-        page.should have_tag("#add-feed-instruction")
-        page.should have_tag("#story-instruction")
-        page.should have_tag("#start")
+        expect(page).to have_tag("#mark-all-instruction")
+        expect(page).to have_tag("#refresh-instruction")
+        expect(page).to have_tag("#feeds-instruction")
+        expect(page).to have_tag("#add-feed-instruction")
+        expect(page).to have_tag("#story-instruction")
+        expect(page).to have_tag("#start")
       end
     end
   end
@@ -78,15 +78,15 @@ describe "FirstRunController" do
 
     it "should redirect any requests to first run stuff" do
       get "/"
-      last_response.status.should be 302
+      expect(last_response.status).to be 302
       URI.parse(last_response.location).path.should eq "/news"
 
       get "/setup/password"
-      last_response.status.should be 302
+      expect(last_response.status).to be 302
       URI.parse(last_response.location).path.should eq "/news"
 
       get "/setup/tutorial"
-      last_response.status.should be 302
+      expect(last_response.status).to be 302
       URI.parse(last_response.location).path.should eq "/news"
     end
   end

@@ -28,7 +28,7 @@ describe ChangeUserPassword do
       command = ChangeUserPassword.new(repo)
       result = command.change_user_password(new_password)
 
-      result.api_key.should eq ApiKey.compute(new_password)
+      expect(result.api_key).to eq ApiKey.compute(new_password)
     end
   end
 end

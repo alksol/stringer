@@ -11,7 +11,7 @@ describe "i18n" do
     let(:locale) { nil }
 
     it "should load default locale" do
-      I18n.locale.to_s.should eq "en"
+      expect(I18n.locale.to_s).to eq "en"
       I18n.locale.to_s.should_not eq nil
     end
   end
@@ -20,7 +20,7 @@ describe "i18n" do
     let(:locale) { "en" }
 
     it "should load default locale" do
-      I18n.locale.to_s.should eq "en"
+      expect(I18n.locale.to_s).to eq "en"
       I18n.t("layout.title").should eq "AlkaliNews"
     end
   end

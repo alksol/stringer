@@ -18,7 +18,7 @@ describe FeedDiscovery do
 
       result = FeedDiscovery.new.discover(url, finder, parser)
 
-      result.should be_falsey
+      expect(result).to be_falsey
     end
 
     it "returns a feed if the url provided is parsable" do
@@ -26,7 +26,7 @@ describe FeedDiscovery do
 
       result = FeedDiscovery.new.discover(url, finder, parser)
 
-      result.should eq feed
+      expect(result).to eq feed
     end
 
     it "returns false if the discovered feed is not parsable" do
@@ -36,7 +36,7 @@ describe FeedDiscovery do
 
       result = FeedDiscovery.new.discover(url, finder, parser)
 
-      result.should be_falsey
+      expect(result).to be_falsey
     end
 
     it "returns the feed if the discovered feed is parsable" do
@@ -46,7 +46,7 @@ describe FeedDiscovery do
 
       result = FeedDiscovery.new.discover(url, finder, parser)
 
-      result.should eq feed
+      expect(result).to eq feed
     end
   end
 end

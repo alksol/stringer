@@ -13,16 +13,16 @@ describe FeverAPI::ReadFeeds do
 
   it "returns a list of feeds" do
     feed_repository.should_receive(:list).and_return(feeds)
-    subject.call("feeds" => nil).should == {
+    subject.call("feeds" => nil).should eq({
       feeds: [
         { id: 5 },
         { id: 7 },
         { id: 11 }
       ]
-    }
+    })
   end
 
   it "returns an empty hash otherwise" do
-    subject.call.should == {}
+    expect(subject.call).to eq({})
   end
 end

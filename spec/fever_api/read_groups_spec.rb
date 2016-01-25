@@ -26,6 +26,6 @@ describe FeverAPI::ReadGroups do
   end
 
   it "returns an empty hash otherwise" do
-    subject.call.should == {}
+    expect(subject.call).to eq({})
   end
 end

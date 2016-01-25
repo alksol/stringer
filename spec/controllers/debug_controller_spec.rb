@@ -21,29 +21,29 @@ describe "DebugController" do
       get "/debug"
 
       page = last_response.body
-      page.should have_tag("dd", text: RUBY_VERSION)
+      expect(page).to have_tag("dd", text: RUBY_VERSION)
     end
 
     it "displays the user agent" do
       get "/debug", {}, "HTTP_USER_AGENT" => "test"
 
       page = last_response.body
-      page.should have_tag("dd", text: /test/)
+      expect(page).to have_tag("dd", text: /test/)
     end
 
     it "displays the delayed job count" do
       get "/debug"
 
       page = last_response.body
-      page.should have_tag("dd", text: /42/)
+      expect(page).to have_tag("dd", text: /42/)
     end
 
     it "displays pending migrations" do
       get "/debug"
 
       page = last_response.body
-      page.should have_tag("li", text: /Migration B - 2/)
-      page.should have_tag("li", text: /Migration C - 3/)
+      expect(page).to have_tag("li", text: /Migration B - 2/)
+      expect(page).to have_tag("li", text: /Migration C - 3/)
     end
   end
 end

@@ -33,7 +33,7 @@ describe FeverAPI do
   describe "authentication" do
     it "authenticates request with correct api_key" do
       get "/", headers
-      last_response.should be_ok
+      expect(last_response).to be_ok
     end
 
     it "does not authenticate request with incorrect api_key" do
@@ -55,8 +55,8 @@ describe FeverAPI do
     it "returns standard answer" do
       make_request
 
-      last_response.should be_ok
-      last_response_as_object.should include(standard_answer)
+      expect(last_response).to be_ok
+      expect(last_response_as_object).to include(standard_answer)
     end
 
     it "returns groups and feeds by groups when 'groups' header is provided" do
@@ -65,9 +65,9 @@ describe FeverAPI do
 
       make_request(groups: nil)
 
-      last_response.should be_ok
-      last_response_as_object.should include(standard_answer)
-      last_response_as_object.should include(
+      expect(last_response).to be_ok
+      expect(last_response_as_object).to include(standard_answer)
+      expect(last_response_as_object).to include(
         groups: [group.as_fever_json],
         feeds_groups: [{ group_id: group.id, feed_ids: feed.id.to_s }]
       )
@@ -79,9 +79,9 @@ describe FeverAPI do
 
       make_request(feeds: nil)
 
-      last_response.should be_ok
-      last_response_as_object.should include(standard_answer)
-      last_response_as_object.should include(
+      expect(last_response).to be_ok
+      expect(last_response_as_object).to include(standard_answer)
+      expect(last_response_as_object).to include(
         feeds: [feed.as_fever_json],
         feeds_groups: [{ group_id: group.id, feed_ids: feed.id.to_s }]
       )
@@ -90,9 +90,9 @@ describe FeverAPI do
     it "returns favicons hash when 'favicons' header provided" do
       make_request(favicons: nil)
 
-      last_response.should be_ok
-      last_response_as_object.should include(standard_answer)
-      last_response_as_object.should include(
+      expect(last_response).to be_ok
+      expect(last_response_as_object).to include(standard_answer)
+      expect(last_response_as_object).to include(
         favicons: [
           {
             id: 0,
@@ -108,9 +108,9 @@ describe FeverAPI do
 
       make_request(items: nil, since_id: 5)
 
-      last_response.should be_ok
-      last_response_as_object.should include(standard_answer)
-      last_response_as_object.should include(
+      expect(last_response).to be_ok
+      expect(last_response_as_object).to include(standard_answer)
+      expect(last_response_as_object).to include(
         items: [story_one.as_fever_json],
         total_items: 2
       )
@@ -121,9 +121,9 @@ describe FeverAPI do
 
       make_request(items: nil)
 
-      last_response.should be_ok
-      last_response_as_object.should include(standard_answer)
-      last_response_as_object.should include(
+      expect(last_response).to be_ok
+      expect(last_response_as_object).to include(standard_answer)
+      expect(last_response_as_object).to include(
         items: [story_one.as_fever_json, story_two.as_fever_json],
         total_items: 2
       )
@@ -134,9 +134,9 @@ describe FeverAPI do
 
       make_request(items: nil, with_ids: 5)
 
-      last_response.should be_ok
-      last_response_as_object.should include(standard_answer)
-      last_response_as_object.should include(
+      expect(last_response).to be_ok
+      expect(last_response_as_object).to include(standard_answer)
+      expect(last_response_as_object).to include(
         items: [story_one.as_fever_json],
         total_items: 1
       )
@@ -145,9 +145,9 @@ describe FeverAPI do
     it "returns links as empty array when 'links' header is provided" do
       make_request(links: nil)
 
-      last_response.should be_ok
-      last_response_as_object.should include(standard_answer)
-      last_response_as_object.should include(links: [])
+      expect(last_response).to be_ok
+      expect(last_response_as_object).to include(standard_answer)
+      expect(last_response_as_object).to include(links: [])
     end
 
     it "returns unread items ids when 'unread_item_ids' header is provided" do
@@ -155,9 +155,9 @@ describe FeverAPI do
 
       make_request(unread_item_ids: nil)
 
-      last_response.should be_ok
-      last_response_as_object.should include(standard_answer)
-      last_response_as_object.should include(
+      expect(last_response).to be_ok
+      expect(last_response_as_object).to include(standard_answer)
+      expect(last_response_as_object).to include(
         unread_item_ids: [story_one.id, story_two.id].join(",")
       )
     end
@@ -167,9 +167,9 @@ describe FeverAPI do
 
       make_request(saved_item_ids: nil)
 
-      last_response.should be_ok
-      last_response_as_object.should include(standard_answer)
-      last_response_as_object.should include(
+      expect(last_response).to be_ok
+      expect(last_response_as_object).to include(standard_answer)
+      expect(last_response_as_object).to include(
         saved_item_ids: [story_one.id, story_two.id].join(",")
       )
     end
@@ -185,8 +185,8 @@ describe FeverAPI do
 
       make_request(mark: "item", as: "read", id: 10)
 
-      last_response.should be_ok
-      last_response_as_object.should include(standard_answer)
+      expect(last_response).to be_ok
+      expect(last_response_as_object).to include(standard_answer)
     end
 
     it "commands to mark story as unread" do
@@ -194,8 +194,8 @@ describe FeverAPI do
 
       make_request(mark: "item", as: "unread", id: 10)
 
-      last_response.should be_ok
-      last_response_as_object.should include(standard_answer)
+      expect(last_response).to be_ok
+      expect(last_response_as_object).to include(standard_answer)
     end
 
     it "commands to save story" do
@@ -203,8 +203,8 @@ describe FeverAPI do
 
       make_request(mark: "item", as: "saved", id: 10)
 
-      last_response.should be_ok
-      last_response_as_object.should include(standard_answer)
+      expect(last_response).to be_ok
+      expect(last_response_as_object).to include(standard_answer)
     end
 
     it "commands to unsave story" do
@@ -212,8 +212,8 @@ describe FeverAPI do
 
       make_request(mark: "item", as: "unsaved", id: 10)
 
-      last_response.should be_ok
-      last_response_as_object.should include(standard_answer)
+      expect(last_response).to be_ok
+      expect(last_response_as_object).to include(standard_answer)
     end
 
     it "commands to mark group as read" do
@@ -221,8 +221,8 @@ describe FeverAPI do
 
       make_request(mark: "group", as: "read", id: 10, before: 1375080946)
 
-      last_response.should be_ok
-      last_response_as_object.should include(standard_answer)
+      expect(last_response).to be_ok
+      expect(last_response_as_object).to include(standard_answer)
     end
 
     it "commands to mark entire feed as read" do
@@ -230,8 +230,8 @@ describe FeverAPI do
 
       make_request(mark: "feed", as: "read", id: 20, before: 1375080945)
 
-      last_response.should be_ok
-      last_response_as_object.should include(standard_answer)
+      expect(last_response).to be_ok
+      expect(last_response_as_object).to include(standard_answer)
     end
   end
 end

@@ -11,7 +11,7 @@ describe StoryRepository do
 
     it "normalizes story urls" do
       entry = double(url: "//blog.golang.org/context", title: "", content: "").as_null_object
-      StoryRepository.should receive(:normalize_url).with(entry.url, feed.url)
+      expect(StoryRepository).to receive(:normalize_url).with(entry.url, feed.url)
 
       StoryRepository.add(entry, feed)
     end
@@ -20,7 +20,7 @@ describe StoryRepository do
       entry = double(title: "n\u2028\u2029", content: "").as_null_object
       StoryRepository.stub(:normalize_url)
 
-      Story.should receive(:create).with(hash_including(title: "n"))
+      expect(Story).to receive(:create).with(hash_including(title: "n"))
 
       StoryRepository.add(entry, feed)
     end
@@ -51,22 +51,22 @@ describe StoryRepository do
     context "regressions" do
       it "handles <wbr> tag properly" do
         result = StoryRepository.sanitize("<code>WM_<wbr\t\n >ERROR</code> asdf")
-        result.should eq "<code>WM_ERROR</code> asdf"
+        expect(result).to eq "<code>WM_ERROR</code> asdf"
       end
 
       it "handles <figure> tag properly" do
         result = StoryRepository.sanitize("<figure>some code</figure>")
-        result.should eq "<figure>some code</figure>"
+        expect(result).to eq "<figure>some code</figure>"
       end
 
       it "handles unprintable characters" do
         result = StoryRepository.sanitize("n\u2028\u2029")
-        result.should eq "n"
+        expect(result).to eq "n"
       end
 
       it "preserves line endings" do
         result = StoryRepository.sanitize("test\r\ncase")
-        result.should eq "test\r\ncase"
+        expect(result).to eq "test\r\ncase"
       end
     end
   end

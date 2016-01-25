@@ -12,8 +12,8 @@ describe "FeedsController" do
       get "/feeds"
 
       page = last_response.body
-      page.should have_tag("ul#feed-list")
-      page.should have_tag("li.feed", count: 2)
+      expect(page).to have_tag("ul#feed-list")
+      expect(page).to have_tag("li.feed", count: 2)
     end
 
     it "displays message to add feeds if there are none" do
@@ -22,7 +22,7 @@ describe "FeedsController" do
       get "/feeds"
 
       page = last_response.body
-      page.should have_tag("#add-some-feeds")
+      expect(page).to have_tag("#add-some-feeds")
     end
   end
 
@@ -33,8 +33,8 @@ describe "FeedsController" do
 
       get "/feeds/123/edit"
 
-      last_response.body.should include("Rainbows and unicorns")
-      last_response.body.should include("example.com/feed")
+      expect(last_response.body).to include("Rainbows and unicorns")
+      expect(last_response.body).to include("example.com/feed")
     end
   end
 
@@ -46,7 +46,7 @@ describe "FeedsController" do
 
       put "/feeds/123", feed_id: "123", feed_name: "Test", feed_url: "example.com/feed"
 
-      last_response.should be_redirect
+      expect(last_response).to be_redirect
     end
 
     it "updates a feed group given the id" do
@@ -56,7 +56,7 @@ describe "FeedsController" do
 
       put "/feeds/123", feed_id: "123", feed_name: feed.name, feed_url: feed.url, group_id: "321"
 
-      last_response.should be_redirect
+      expect(last_response).to be_redirect
     end
   end
 
@@ -73,8 +73,8 @@ describe "FeedsController" do
       get "/feeds/new"
 
       page = last_response.body
-      page.should have_tag("form#add-feed-setup")
-      page.should have_tag("input#submit")
+      expect(page).to have_tag("form#add-feed-setup")
+      expect(page).to have_tag("input#submit")
     end
   end
 
@@ -89,7 +89,7 @@ describe "FeedsController" do
 
         post "/feeds", feed_url: feed_url
 
-        last_response.status.should be 302
+        expect(last_response.status).to be 302
         URI.parse(last_response.location).path.should eq "/"
       end
     end
@@ -103,7 +103,7 @@ describe "FeedsController" do
         post "/feeds", feed_url: feed_url
 
         page = last_response.body
-        page.should have_tag(".error")
+        expect(page).to have_tag(".error")
       end
     end
 
@@ -117,7 +117,7 @@ describe "FeedsController" do
         post "/feeds", feed_url: feed_url
 
         page = last_response.body
-        page.should have_tag(".error")
+        expect(page).to have_tag(".error")
       end
     end
   end
@@ -127,8 +127,8 @@ describe "FeedsController" do
       get "/feeds/import"
 
       page = last_response.body
-      page.should have_tag("input#opml_file")
-      page.should have_tag("a#skip")
+      expect(page).to have_tag("input#opml_file")
+      expect(page).to have_tag("a#skip")
     end
   end
 
@@ -140,7 +140,7 @@ describe "FeedsController" do
 
       post "/feeds/import", "opml_file" => opml_file
 
-      last_response.status.should be 302
+      expect(last_response.status).to be 302
       URI.parse(last_response.location).path.should eq "/setup/tutorial"
     end
   end
@@ -154,9 +154,9 @@ describe "FeedsController" do
 
       get "/feeds/export"
 
-      last_response.body.should eq some_xml
-      last_response.header["Content-Type"].should include "application/xml"
-      last_response.header["Content-Disposition"].should == "attachment; filename=\"stringer.opml\""
+      expect(last_response.body).to eq some_xml
+      expect(last_response.header["Content-Type"]).to include "application/xml"
+      expect(last_response.header["Content-Disposition"]).to eq "attachment; filename=\"stringer.opml\""
     end
   end
 end
