@@ -90,7 +90,7 @@ describe "FeedsController" do
         post "/feeds", feed_url: feed_url
 
         expect(last_response.status).to be 302
-        URI.parse(last_response.location).path.should eq "/"
+        expect(URI.parse(last_response.location).path).to eq "/"
       end
     end
 
@@ -141,7 +141,7 @@ describe "FeedsController" do
       post "/feeds/import", "opml_file" => opml_file
 
       expect(last_response.status).to be 302
-      URI.parse(last_response.location).path.should eq "/setup/tutorial"
+      expect(URI.parse(last_response.location).path).to eq "/setup/tutorial"
     end
   end
 

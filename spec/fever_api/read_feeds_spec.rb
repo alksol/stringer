@@ -13,7 +13,7 @@ describe FeverAPI::ReadFeeds do
 
   it "returns a list of feeds" do
     expect(feed_repository).to receive(:list).and_return(feeds)
-    subject.call("feeds" => nil).should eq({
+    expect(subject.call("feeds" => nil)).to eq({
       feeds: [
         { id: 5 },
         { id: 7 },

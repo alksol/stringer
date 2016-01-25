@@ -13,7 +13,7 @@ RSpec.describe UrlHelpers do
     it "preserves existing absolute urls" do
       content = '<a href="http://foo">bar</a>'
 
-      helper.expand_absolute_urls(content, nil).should eq content
+      expect(helper.expand_absolute_urls(content, nil)).to eq content
     end
 
     it "replaces relative urls in a, img and video tags" do
@@ -26,7 +26,7 @@ RSpec.describe UrlHelpers do
       EOS
 
       result = helper.expand_absolute_urls(content, "http://oodl.io/d/")
-      result.gsub(/\n/, "").should eq <<-EOS.gsub(/\n/, "")
+      expect(result.gsub(/\n/, "")).to eq <<-EOS.gsub(/\n/, "")
 <div>
 <img src="https://foo">
 <a href="http://oodl.io/bar/baz">tee</a>
@@ -37,7 +37,7 @@ RSpec.describe UrlHelpers do
     end
 
     it "handles empty body" do
-      helper.expand_absolute_urls("", nil).should eq ""
+      expect(helper.expand_absolute_urls("", nil)).to eq ""
     end
 
     it "doesn't modify tags that do not have url attributes" do
@@ -50,7 +50,7 @@ RSpec.describe UrlHelpers do
       EOS
 
       result = helper.expand_absolute_urls(content, "http://oodl.io/d/")
-      result.gsub(/\n/, "").should eq <<-EOS.gsub(/\n/, "")
+      expect(result.gsub(/\n/, "")).to eq <<-EOS.gsub(/\n/, "")
 <div>
 <img foo="bar">
 <a name="something"></a>

@@ -41,7 +41,7 @@ describe "FirstRunController" do
         post "/setup/password", password: "foo", password_confirmation: "foo"
 
         expect(last_response.status).to be 302
-        URI.parse(last_response.location).path.should eq "/feeds/import"
+        expect(URI.parse(last_response.location).path).to eq "/feeds/import"
       end
     end
 
@@ -79,15 +79,15 @@ describe "FirstRunController" do
     it "should redirect any requests to first run stuff" do
       get "/"
       expect(last_response.status).to be 302
-      URI.parse(last_response.location).path.should eq "/news"
+      expect(URI.parse(last_response.location).path).to eq "/news"
 
       get "/setup/password"
       expect(last_response.status).to be 302
-      URI.parse(last_response.location).path.should eq "/news"
+      expect(URI.parse(last_response.location).path).to eq "/news"
 
       get "/setup/tutorial"
       expect(last_response.status).to be 302
-      URI.parse(last_response.location).path.should eq "/news"
+      expect(URI.parse(last_response.location).path).to eq "/news"
     end
   end
 end

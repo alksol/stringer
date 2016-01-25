@@ -15,7 +15,7 @@ describe "MigrationStatus" do
       migrator.stub(:migrations_path)
       migrator.stub(:current_version).and_return 1
 
-      MigrationStatus.new(migrator).pending_migrations.should eq ["Migration B - 2", "Migration C - 3"]
+      expect(MigrationStatus.new(migrator).pending_migrations).to eq(["Migration B - 2", "Migration C - 3"])
     end
   end
 end

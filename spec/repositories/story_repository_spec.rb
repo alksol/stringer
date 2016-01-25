@@ -39,11 +39,11 @@ describe StoryRepository do
     end
 
     it "sanitizes content" do
-      StoryRepository.extract_content(entry).should eq "Some test content"
+      expect(StoryRepository.extract_content(entry)).to eq "Some test content"
     end
 
     it "falls back to summary if there is no content" do
-      StoryRepository.extract_content(summary_only).should eq "Dumb publisher"
+      expect(StoryRepository.extract_content(summary_only)).to eq "Dumb publisher"
     end
   end
 

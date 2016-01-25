@@ -18,7 +18,7 @@ describe ChangeUserPassword do
       command = ChangeUserPassword.new(repo)
       result = command.change_user_password(new_password)
 
-      BCrypt::Password.new(result.password_digest).should eq new_password
+      expect(BCrypt::Password.new(result.password_digest)).to eq new_password
     end
 
     it "changes the API key of the user" do

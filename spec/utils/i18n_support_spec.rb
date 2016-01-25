@@ -21,7 +21,7 @@ describe "i18n" do
 
     it "should load default locale" do
       expect(I18n.locale.to_s).to eq "en"
-      I18n.t("layout.title").should eq "AlkaliNews"
+      expect(I18n.t("layout.title")).to eq "AlkaliNews"
     end
   end
 

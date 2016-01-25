@@ -13,7 +13,7 @@ describe FeverAPI::WriteMarkFeed do
   it "instantiates a feed marker and calls mark_feed_as_read if requested" do
     expect(marker_class).to receive(:new).with(5, 1234567890).and_return(feed_marker)
     expect(feed_marker).to receive(:mark_feed_as_read)
-    subject.call(mark: "feed", id: 5, before: 1234567890).should == {}
+    expect(subject.call(mark: "feed", id: 5, before: 1234567890)).to eq({})
   end
 
   it "returns an empty hash otherwise" do
