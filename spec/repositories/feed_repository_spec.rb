@@ -58,7 +58,7 @@ describe FeedRepository do
     let(:feed) { Feed.new(id: 1) }
 
     it "finds by id" do
-      Feed.should_receive(:find).with(feed.id).and_return(feed)
+      expect(Feed).to receive(:find).with(feed.id).and_return(feed)
       FeedRepository.fetch(feed.id)
     end
 

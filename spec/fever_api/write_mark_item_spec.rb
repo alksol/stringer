@@ -12,8 +12,8 @@ describe FeverAPI::WriteMarkItem do
     end
 
     it "instantiates an item marker and calls mark_item_as_read if requested" do
-      marker_class.should_receive(:new).with(5).and_return(item_marker)
-      item_marker.should_receive(:mark_as_read)
+      expect(marker_class).to receive(:new).with(5).and_return(item_marker)
+      expect(item_marker).to receive(:mark_as_read)
       subject.call(mark: "item", as: "read", id: 5).should == {}
     end
   end
@@ -24,8 +24,8 @@ describe FeverAPI::WriteMarkItem do
     end
 
     it "instantiates an item marker and calls mark_item_as_unread if requested" do
-      marker_class.should_receive(:new).with(5).and_return(item_marker)
-      item_marker.should_receive(:mark_as_unread)
+      expect(marker_class).to receive(:new).with(5).and_return(item_marker)
+      expect(item_marker).to receive(:mark_as_unread)
       subject.call(mark: "item", as: "unread", id: 5).should == {}
     end
   end
@@ -36,8 +36,8 @@ describe FeverAPI::WriteMarkItem do
     end
 
     it "instantiates an item marker and calls mark_item_as_starred if requested" do
-      marker_class.should_receive(:new).with(5).and_return(item_marker)
-      item_marker.should_receive(:mark_as_starred)
+      expect(marker_class).to receive(:new).with(5).and_return(item_marker)
+      expect(item_marker).to receive(:mark_as_starred)
       subject.call(mark: "item", as: "saved", id: 5).should == {}
     end
   end
@@ -48,8 +48,8 @@ describe FeverAPI::WriteMarkItem do
     end
 
     it "instantiates an item marker and calls mark_item_as_unstarred if requested" do
-      marker_class.should_receive(:new).with(5).and_return(item_marker)
-      item_marker.should_receive(:mark_as_unstarred)
+      expect(marker_class).to receive(:new).with(5).and_return(item_marker)
+      expect(item_marker).to receive(:mark_as_unstarred)
       subject.call(mark: "item", as: "unsaved", id: 5).should == {}
     end
   end

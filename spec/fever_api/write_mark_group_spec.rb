@@ -11,8 +11,8 @@ describe FeverAPI::WriteMarkGroup do
   end
 
   it "instantiates a group marker and calls mark_group_as_read if requested" do
-    marker_class.should_receive(:new).with(5, 1234567890).and_return(group_marker)
-    group_marker.should_receive(:mark_group_as_read)
+    expect(marker_class).to receive(:new).with(5, 1234567890).and_return(group_marker)
+    expect(group_marker).to receive(:mark_group_as_read)
     subject.call(mark: "group", id: 5, before: 1234567890).should == {}
   end
 

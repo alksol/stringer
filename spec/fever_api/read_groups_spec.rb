@@ -10,7 +10,7 @@ describe FeverAPI::ReadGroups do
   subject { FeverAPI::ReadGroups.new(group_repository: group_repository) }
 
   it "returns a group list if requested" do
-    group_repository.should_receive(:list).and_return([group_1, group_2])
+    expect(group_repository).to receive(:list).and_return([group_1, group_2])
     subject.call("groups" => nil).should == {
       groups: [
         {

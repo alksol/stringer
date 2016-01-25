@@ -11,10 +11,10 @@ describe FetchFeeds do
       pool.stub(:process).and_yield
       FetchFeed.stub(:new).and_return(fetcher_one, fetcher_two)
 
-      fetcher_one.should_receive(:fetch).once
-      fetcher_two.should_receive(:fetch).once
+      expect(fetcher_one).to receive(:fetch).once
+      expect(fetcher_two).to receive(:fetch).once
 
-      pool.should_receive(:shutdown)
+      expect(pool).to receive(:shutdown)
 
       FetchFeeds.new(feeds, pool).fetch_all
     end

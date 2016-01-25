@@ -7,7 +7,7 @@ describe "FeedsController" do
 
   describe "GET /feeds" do
     it "renders a list of feeds" do
-      FeedRepository.should_receive(:list).and_return(feeds)
+      expect(FeedRepository).to receive(:list).and_return(feeds)
 
       get "/feeds"
 
@@ -17,7 +17,7 @@ describe "FeedsController" do
     end
 
     it "displays message to add feeds if there are none" do
-      FeedRepository.should_receive(:list).and_return([])
+      expect(FeedRepository).to receive(:list).and_return([])
 
       get "/feeds"
 
@@ -29,7 +29,7 @@ describe "FeedsController" do
   describe "GET /feeds/:feed_id/edit" do
     it "fetches a feed given the id" do
       feed = Feed.new(name: "Rainbows and unicorns", url: "example.com/feed")
-      FeedRepository.should_receive(:fetch).with("123").and_return(feed)
+      expect(FeedRepository).to receive(:fetch).with("123").and_return(feed)
 
       get "/feeds/123/edit"
 
@@ -41,8 +41,8 @@ describe "FeedsController" do
   describe "PUT /feeds/:feed_id" do
     it "updates a feed given the id" do
       feed = FeedFactory.build(url: "example.com/atom")
-      FeedRepository.should_receive(:fetch).with("123").and_return(feed)
-      FeedRepository.should_receive(:update_feed).with(feed, "Test", "example.com/feed", nil)
+      expect(FeedRepository).to receive(:fetch).with("123").and_return(feed)
+      expect(FeedRepository).to receive(:update_feed).with(feed, "Test", "example.com/feed", nil)
 
       put "/feeds/123", feed_id: "123", feed_name: "Test", feed_url: "example.com/feed"
 
@@ -51,8 +51,8 @@ describe "FeedsController" do
 
     it "updates a feed group given the id" do
       feed = FeedFactory.build(url: "example.com/atom")
-      FeedRepository.should_receive(:fetch).with("123").and_return(feed)
-      FeedRepository.should_receive(:update_feed).with(feed, feed.name, feed.url, "321")
+      expect(FeedRepository).to receive(:fetch).with("123").and_return(feed)
+      expect(FeedRepository).to receive(:update_feed).with(feed, feed.name, feed.url, "321")
 
       put "/feeds/123", feed_id: "123", feed_name: feed.name, feed_url: feed.url, group_id: "321"
 
@@ -62,7 +62,7 @@ describe "FeedsController" do
 
   describe "DELETE /feeds/:feed_id" do
     it "deletes a feed given the id" do
-      FeedRepository.should_receive(:delete).with("123")
+      expect(FeedRepository).to receive(:delete).with("123")
 
       delete "/feeds/123"
     end
@@ -84,8 +84,8 @@ describe "FeedsController" do
       let(:valid_feed) { double(valid?: true) }
 
       it "adds the feed and queues it to be fetched" do
-        AddNewFeed.should_receive(:add).with(feed_url).and_return(valid_feed)
-        FetchFeeds.should_receive(:enqueue).with([valid_feed])
+        expect(AddNewFeed).to receive(:add).with(feed_url).and_return(valid_feed)
+        expect(FetchFeeds).to receive(:enqueue).with([valid_feed])
 
         post "/feeds", feed_url: feed_url
 
@@ -98,7 +98,7 @@ describe "FeedsController" do
       let(:feed_url) { "http://not-a-valid-feed.com/" }
 
       it "adds the feed and queues it to be fetched" do
-        AddNewFeed.should_receive(:add).with(feed_url).and_return(false)
+        expect(AddNewFeed).to receive(:add).with(feed_url).and_return(false)
 
         post "/feeds", feed_url: feed_url
 
@@ -112,7 +112,7 @@ describe "FeedsController" do
       let(:invalid_feed) { double(valid?: false) }
 
       it "adds the feed and queues it to be fetched" do
-        AddNewFeed.should_receive(:add).with(feed_url).and_return(invalid_feed)
+        expect(AddNewFeed).to receive(:add).with(feed_url).and_return(invalid_feed)
 
         post "/feeds", feed_url: feed_url
 
@@ -136,7 +136,7 @@ describe "FeedsController" do
     let(:opml_file) { Rack::Test::UploadedFile.new("spec/sample_data/subscriptions.xml", "application/xml") }
 
     it "parse OPML and starts fetching" do
-      ImportFromOpml.should_receive(:import).once
+      expect(ImportFromOpml).to receive(:import).once
 
       post "/feeds/import", "opml_file" => opml_file
 
@@ -150,7 +150,7 @@ describe "FeedsController" do
     before { Feed.stub(:all) }
 
     it "returns an OPML file" do
-      ExportToOpml.any_instance.should_receive(:to_xml).and_return(some_xml)
+      expect_any_instance_of(ExportToOpml).to receive(:to_xml).and_return(some_xml)
 
       get "/feeds/export"
 

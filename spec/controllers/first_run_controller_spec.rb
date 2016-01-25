@@ -36,7 +36,7 @@ describe "FirstRunController" do
       end
 
       it "accepts confirmed passwords and redirects to next step" do
-        CreateUser.any_instance.should_receive(:create).with("foo").and_return(double(id: 1))
+        expect_any_instance_of(CreateUser).to receive(:create).with("foo").and_return(double(id: 1))
 
         post "/setup/password", password: "foo", password_confirmation: "foo"
 
@@ -55,8 +55,8 @@ describe "FirstRunController" do
       end
 
       it "displays the tutorial and completes setup" do
-        CompleteSetup.should_receive(:complete).with(user).once
-        FetchFeeds.should_receive(:enqueue).with(feeds).once
+        expect(CompleteSetup).to receive(:complete).with(user).once
+        expect(FetchFeeds).to receive(:enqueue).with(feeds).once
 
         get "/setup/tutorial"
 

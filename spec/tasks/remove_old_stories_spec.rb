@@ -12,7 +12,7 @@ describe RemoveOldStories do
     it "should pass along the number of days to the story repository query" do
       RemoveOldStories.stub(:pruned_feeds) { [] }
 
-      StoryRepository.should_receive(:unstarred_read_stories_older_than).with(7).and_return(stories_mock)
+      expect(StoryRepository).to receive(:unstarred_read_stories_older_than).with(7).and_return(stories_mock)
 
       RemoveOldStories.remove!(7)
     end
@@ -21,7 +21,7 @@ describe RemoveOldStories do
       RemoveOldStories.stub(:pruned_feeds) { [] }
       StoryRepository.stub(:unstarred_read_stories_older_than) { stories_mock }
 
-      stories_mock.should_receive(:delete_all)
+      expect(stories_mock).to receive(:delete_all)
 
       RemoveOldStories.remove!(11)
     end
@@ -33,7 +33,7 @@ describe RemoveOldStories do
         stories
       end
 
-      FeedRepository.should_receive(:fetch_by_ids).with([3, 5]).and_return([])
+      expect(FeedRepository).to receive(:fetch_by_ids).with([3, 5]).and_return([])
 
       RemoveOldStories.remove!(13)
     end
@@ -43,8 +43,8 @@ describe RemoveOldStories do
       RemoveOldStories.stub(:pruned_feeds) { feeds }
       RemoveOldStories.stub(:old_stories) { stories_mock }
 
-      FeedRepository.should_receive(:update_last_fetched).with(feeds.first, anything)
-      FeedRepository.should_receive(:update_last_fetched).with(feeds.last, anything)
+      expect(FeedRepository).to receive(:update_last_fetched).with(feeds.first, anything)
+      expect(FeedRepository).to receive(:update_last_fetched).with(feeds.last, anything)
 
       RemoveOldStories.remove!(13)
     end

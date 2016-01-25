@@ -12,8 +12,8 @@ describe ChangeUserPassword do
 
   describe "#change_user_password" do
     it "changes the password of the user" do
-      repo.should_receive(:first).and_return(user)
-      repo.should_receive(:save)
+      expect(repo).to receive(:first).and_return(user)
+      expect(repo).to receive(:save)
 
       command = ChangeUserPassword.new(repo)
       result = command.change_user_password(new_password)
@@ -22,8 +22,8 @@ describe ChangeUserPassword do
     end
 
     it "changes the API key of the user" do
-      repo.should_receive(:first).and_return(user)
-      repo.should_receive(:save)
+      expect(repo).to receive(:first).and_return(user)
+      expect(repo).to receive(:save)
 
       command = ChangeUserPassword.new(repo)
       result = command.change_user_password(new_password)

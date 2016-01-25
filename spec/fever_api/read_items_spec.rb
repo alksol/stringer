@@ -10,7 +10,7 @@ describe FeverAPI::ReadItems do
   end
 
   it "returns a list of unread items including total count" do
-    story_repository.should_receive(:unread).twice.and_return([
+    expect(story_repository).to receive(:unread).twice.and_return([
       double("story", as_fever_json: { id: 5 }),
       double("story", as_fever_json: { id: 7 }),
       double("story", as_fever_json: { id: 11 })
@@ -26,11 +26,11 @@ describe FeverAPI::ReadItems do
   end
 
   it "returns a list of unread items since id including total count" do
-    story_repository.should_receive(:unread_since_id).with(3).and_return([
+    expect(story_repository).to receive(:unread_since_id).with(3).and_return([
       double("story", as_fever_json: { id: 5 }),
       double("story", as_fever_json: { id: 7 })
     ])
-    story_repository.should_receive(:unread).and_return([
+    expect(story_repository).to receive(:unread).and_return([
       double("story", as_fever_json: { id: 2 }),
       double("story", as_fever_json: { id: 5 }),
       double("story", as_fever_json: { id: 7 })
@@ -45,7 +45,7 @@ describe FeverAPI::ReadItems do
   end
 
   it "returns a list of specified items including total count" do
-    story_repository.should_receive(:fetch_by_ids).with(%w(5 11)).twice.and_return([
+    expect(story_repository).to receive(:fetch_by_ids).with(%w(5 11)).twice.and_return([
       double("story", as_fever_json: { id: 5 }),
       double("story", as_fever_json: { id: 11 })
     ])

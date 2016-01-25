@@ -12,7 +12,7 @@ describe FeverAPI::SyncUnreadItemIds do
   end
 
   it "returns a list of unread items if requested" do
-    story_repository.should_receive(:unread).and_return(stories)
+    expect(story_repository).to receive(:unread).and_return(stories)
     subject.call("unread_item_ids" => nil).should == { unread_item_ids: story_ids.join(",") }
   end
 

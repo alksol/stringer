@@ -12,7 +12,7 @@ describe FeverAPI::SyncSavedItemIds do
   end
 
   it "returns a list of starred items if requested" do
-    story_repository.should_receive(:all_starred).and_return(stories)
+    expect(story_repository).to receive(:all_starred).and_return(stories)
     subject.call("saved_item_ids" => nil).should == { saved_item_ids: story_ids.join(",") }
   end
 
