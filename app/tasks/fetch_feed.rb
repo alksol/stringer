@@ -32,7 +32,7 @@ class FetchFeed
   private
 
   def fetch_raw_feed
-    @parser.fetch_and_parse(@feed.url, options)
+    @parser.fetch_and_parse(@feed.url)
   end
 
   def feed_not_modified

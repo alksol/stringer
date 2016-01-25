@@ -1,10 +1,9 @@
 require "rubygems"
 require "bundler"
-
 Bundler.require
 
-require 'rack/ssl-enforcer'
-use Rack::SslEnforcer
+require 'rack/protection'
+use Rack::Protection
 
 require "./fever_api"
 map "/fever" do
