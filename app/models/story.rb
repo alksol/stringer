@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 require_relative "./feed"
 
 class Story < ActiveRecord::Base
@@ -5,7 +6,7 @@ class Story < ActiveRecord::Base
 
   validates_uniqueness_of :entry_id, scope: :feed_id
 
-  UNTITLED = "[untitled]"
+  UNTITLED = "[untitled]".freeze
 
   def headline
     title.nil? ? UNTITLED : strip_html(title)[0, 50]

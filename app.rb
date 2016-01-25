@@ -8,7 +8,7 @@ require "json"
 require "i18n"
 require "will_paginate"
 require "will_paginate/active_record"
-require 'rack/protection'
+require "rack/protection"
 
 require_relative "app/helpers/authentication_helpers"
 require_relative "app/repositories/user_repository"
