@@ -7,15 +7,13 @@ describe "DebugController" do
   describe "GET /debug" do
     before do
       delayed_job = double "Delayed::Job"
-      expect(delayed_job).to receive(:count).and_return(42)
+      allow(delayed_job).to receive(:count).and_return(42)
       stub_const("Delayed::Job", delayed_job)
 
       migration_status_instance = double "migration_status_instance"
-      expect(migration_status_instance)
-        .to receive(:pending_migrations)
-        .and_return ["Migration B - 2", "Migration C - 3"]
+      allow(migration_status_instance).to receive(:pending_migrations).and_return ["Migration B - 2", "Migration C - 3"]
       migration_status = double "MigrationStatus"
-      expect(migration_status).to receive(:new).and_return(migration_status_instance)
+      allow(migration_status).to receive(:new).and_return(migration_status_instance)
       stub_const("MigrationStatus", migration_status)
     end
 
@@ -23,7 +21,7 @@ describe "DebugController" do
       get "/debug"
 
       page = last_response.body
-      expect(page).to have_tag("dd", text: RUBY_VERSION)
+      expect(page).to have_tag("dd", text: /#{RUBY_VERSION}/)
     end
 
     it "displays the user agent" do

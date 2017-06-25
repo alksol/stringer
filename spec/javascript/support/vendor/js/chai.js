@@ -272,10 +272,10 @@ var expect = require('./chai/interface/expect');
 exports.use(expect);
 
 /*!
- expect(*).to interface
+ * Should interface
  */
 
-expect(var).to = require('./chai/interface/should');
+var should = require('./chai/interface/should');
 exports.use(should);
 
 /*!
@@ -2874,7 +2874,7 @@ module.exports = function (chai, util) {
       , configurable: true
     });
 
-    expect(var).to = {};
+    var should = {};
 
     should.equal = function (val1, val2, msg) {
       new Assertion(val1, msg).to.equal(val2);
@@ -2909,8 +2909,8 @@ module.exports = function (chai, util) {
     return should;
   };
 
-  expect(chai).to = loadShould;
-  expect(chai).to = loadShould;
+  chai.should = loadShould;
+  chai.Should = loadShould;
 };
 
 });

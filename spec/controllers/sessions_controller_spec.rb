@@ -15,7 +15,7 @@ describe "SessionsController" do
 
   describe "POST /login" do
     it "denies access when password is incorrect" do
-      expect(SignInUser).to receive(:sign_in).and_return(nil)
+      allow(SignInUser).to receive(:sign_in).and_return(nil)
 
       post "/login", password: "not-the-password"
 
@@ -24,7 +24,7 @@ describe "SessionsController" do
     end
 
     it "allows access when password is correct" do
-      expect(SignInUser).to receive(:sign_in).and_return(double(id: 1))
+      allow(SignInUser).to receive(:sign_in).and_return(double(id: 1))
 
       post "/login", password: "the-password"
 
@@ -35,7 +35,7 @@ describe "SessionsController" do
     end
 
     it "redirects to the previous path when present" do
-      expect(SignInUser).to receive(:sign_in).and_return(double(id: 1))
+      allow(SignInUser).to receive(:sign_in).and_return(double(id: 1))
 
       post "/login", { password: "the-password" },
            "rack.session" => { redirect_to: "/archive" }

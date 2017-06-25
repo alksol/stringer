@@ -21,7 +21,8 @@ describe FeverAPI::ReadGroups do
           id: 2,
           title: "World news"
         }
-      ])
+      ]
+    )
   end
 
   it "returns an empty hash otherwise" do

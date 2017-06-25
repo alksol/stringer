@@ -59,7 +59,7 @@ describe ImportFromOpml do
 
     it "creates groups" do
       expect(group_1).to be
-      expect(group_2).to be
+      expect(group_1).to be
     end
 
     it "creates feeds" do

@@ -21,8 +21,8 @@ describe MarkGroupAsRead do
 
     it "does not mark any group as read when group is not provided" do
       command = run_command(nil)
-      expect(repo).to_not receive(:fetch_unread_by_timestamp_and_group)
-      expect(repo).to_not receive(:fetch_unread_by_timestamp)
+      expect(repo).not_to receive(:fetch_unread_by_timestamp_and_group)
+      expect(repo).not_to receive(:fetch_unread_by_timestamp)
       command.mark_group_as_read
     end
 

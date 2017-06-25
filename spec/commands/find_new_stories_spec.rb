@@ -7,7 +7,7 @@ describe FindNewStories do
   describe "#new_stories" do
     context "the feed contains no new stories" do
       before do
-        expect(StoryRepository).to receive(:exists?).and_return(true).at_least(:once)
+        allow(StoryRepository).to receive(:exists?).and_return(true)
       end
 
       it "should find zero new stories" do
@@ -26,8 +26,8 @@ describe FindNewStories do
         story2 = double(published: nil, id: "story2")
         feed   = double(entries: [story1, story2])
 
-        expect(StoryRepository).to receive(:exists?).with("story1", 1).and_return(true)
-        expect(StoryRepository).to receive(:exists?).with("story2", 1).and_return(false)
+        allow(StoryRepository).to receive(:exists?).with("story1", 1).and_return(true)
+        allow(StoryRepository).to receive(:exists?).with("story2", 1).and_return(false)
 
         result = FindNewStories.new(feed, 1, Time.new(2013, 1, 2)).new_stories
         expect(result).to eq [story2]
@@ -57,7 +57,7 @@ describe FindNewStories do
       feed = double(last_modified: nil, entries: new_stories + stories_older_than_3_days)
 
       result = FindNewStories.new(feed, 1, nil, nil).new_stories
-      expect(result).to_not include(stories_older_than_3_days)
+      expect(result).not_to include(stories_older_than_3_days)
     end
   end
 end

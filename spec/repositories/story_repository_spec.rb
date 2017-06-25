@@ -18,7 +18,7 @@ describe StoryRepository do
 
     it "sanitizes titles" do
       entry = double(title: "n\u2028\u2029", content: "").as_null_object
-      expect(StoryRepository).to receive(:normalize_url)
+      allow(StoryRepository).to receive(:normalize_url)
 
       expect(Story).to receive(:create).with(hash_including(title: "n"))
 

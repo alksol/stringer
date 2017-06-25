@@ -11,7 +11,7 @@ describe "StoriesController" do
   describe "GET /news" do
     before do
       allow(StoryRepository).to receive(:unread).and_return(stories)
-      expect(UserRepository).to receive(:fetch).and_return(double).at_least(:once)
+      allow(UserRepository).to receive(:fetch).and_return(double)
     end
 
     it "display list of unread stories" do
@@ -48,7 +48,7 @@ describe "StoriesController" do
     end
 
     it "displays a zen-like message when there are no unread stories" do
-      expect(StoryRepository).to receive(:unread).and_return([])
+      allow(StoryRepository).to receive(:unread).and_return([])
 
       get "/news"
 
@@ -60,7 +60,7 @@ describe "StoriesController" do
     let(:read_one) { StoryFactory.build(is_read: true) }
     let(:read_two) { StoryFactory.build(is_read: true) }
     let(:stories) { [read_one, read_two].paginate }
-    before { expect(StoryRepository).to receive(:read).and_return(stories) }
+    before { allow(StoryRepository).to receive(:read).and_return(stories) }
 
     it "displays the list of read stories with pagination" do
       get "/archive"
@@ -75,7 +75,7 @@ describe "StoriesController" do
     let(:starred_one) { StoryFactory.build(is_starred: true) }
     let(:starred_two) { StoryFactory.build(is_starred: true) }
     let(:stories) { [starred_one, starred_two].paginate }
-    before { expect(StoryRepository).to receive(:starred).and_return(stories) }
+    before { allow(StoryRepository).to receive(:starred).and_return(stories) }
 
     it "displays the list of starred stories with pagination" do
       get "/starred"
@@ -87,7 +87,7 @@ describe "StoriesController" do
   end
 
   describe "PUT /stories/:id" do
-    before { expect(StoryRepository).to receive(:fetch).and_return(story_one) }
+    before { allow(StoryRepository).to receive(:fetch).and_return(story_one) }
     context "is_read parameter" do
       context "when it is not malformed" do
         it "marks a story as read" do
@@ -167,8 +167,8 @@ describe "StoriesController" do
     end
 
     it "displays a list of stories" do
-      expect(FeedRepository).to receive(:fetch).and_return(story_one.feed)
-      expect(StoryRepository).to receive(:feed).and_return(stories)
+      allow(FeedRepository).to receive(:fetch).and_return(story_one.feed)
+      allow(StoryRepository).to receive(:feed).and_return(stories)
 
       get "/feed/#{story_one.feed.id}"
 
@@ -176,8 +176,8 @@ describe "StoriesController" do
     end
 
     it "differentiates between read and unread" do
-      expect(FeedRepository).to receive(:fetch).and_return(story_one.feed)
-      expect(StoryRepository).to receive(:feed).and_return(stories)
+      allow(FeedRepository).to receive(:fetch).and_return(story_one.feed)
+      allow(StoryRepository).to receive(:feed).and_return(stories)
 
       story_one.is_read = false
       story_two.is_read = true

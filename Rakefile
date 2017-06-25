@@ -8,6 +8,7 @@ require "delayed_job"
 require "delayed_job_active_record"
 
 require "sinatra/activerecord/rake"
+ActiveRecord::Tasks::DatabaseTasks.db_dir = "db"
 
 require "./app"
 require_relative "./app/jobs/fetch_feed_job"
@@ -46,7 +47,8 @@ desc "Work the delayed_job queue."
 task :work_jobs do
   Delayed::Job.delete_all
 
-  3.times do
+  worker_retry = Integer(ENV["WORKER_RETRY"] || 3)
+  worker_retry.times do
     Delayed::Worker.new(
       min_priority: ENV["MIN_PRIORITY"],
       max_priority: ENV["MAX_PRIORITY"]

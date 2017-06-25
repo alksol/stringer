@@ -5,7 +5,7 @@ app_require "controllers/first_run_controller"
 describe "FirstRunController" do
   context "when a user has not been setup" do
     before do
-      expect(UserRepository).to receive(:setup_complete?).and_return(false).at_least(:once)
+      allow(UserRepository).to receive(:setup_complete?).and_return(false)
     end
 
     describe "GET /setup/password" do
@@ -51,7 +51,7 @@ describe "FirstRunController" do
 
       before do
         allow(UserRepository).to receive(:fetch).and_return(user)
-        expect(Feed).to receive(:all).and_return(feeds)
+        allow(Feed).to receive(:all).and_return(feeds)
       end
 
       it "displays the tutorial and completes setup" do
@@ -73,7 +73,7 @@ describe "FirstRunController" do
 
   context "when a user has been setup" do
     before do
-      expect(UserRepository).to receive(:setup_complete?).and_return(true).at_least(:once)
+      allow(UserRepository).to receive(:setup_complete?).and_return(true)
     end
 
     it "should redirect any requests to first run stuff" do

@@ -20,7 +20,7 @@ describe FetchFeed do
       it "should not try to fetch posts" do
         parser = double(fetch_and_parse: 304)
 
-        expect(StoryRepository).to_not receive(:add)
+        expect(StoryRepository).not_to receive(:add)
 
         FetchFeed.new(daring_fireball, parser: parser)
       end
@@ -31,9 +31,9 @@ describe FetchFeed do
         fake_feed = double(last_modified: Time.new(2012, 12, 31))
         parser = double(fetch_and_parse: fake_feed)
 
-        expect_any_instance_of(FindNewStories).to receive(:new_stories).and_return([])
+        allow_any_instance_of(FindNewStories).to receive(:new_stories).and_return([])
 
-        expect(StoryRepository).to_not receive(:add)
+        expect(StoryRepository).not_to receive(:add)
 
         FetchFeed.new(daring_fireball, parser: parser).fetch
       end
@@ -47,11 +47,11 @@ describe FetchFeed do
       let(:fake_feed) { double(last_modified: now, entries: [new_story, old_story]) }
       let(:fake_parser) { double(fetch_and_parse: fake_feed) }
 
-      before { expect_any_instance_of(FindNewStories).to receive(:new_stories).and_return([new_story]) }
+      before { allow_any_instance_of(FindNewStories).to receive(:new_stories).and_return([new_story]) }
 
       it "should only add posts that are new" do
         expect(StoryRepository).to receive(:add).with(new_story, daring_fireball)
-        expect(StoryRepository).to_not receive(:add).with(old_story, daring_fireball)
+        expect(StoryRepository).not_to receive(:add).with(old_story, daring_fireball)
 
         FetchFeed.new(daring_fireball, parser: fake_parser).fetch
       end

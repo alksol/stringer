@@ -1,3 +1,11 @@
+//= require jquery-min.js
+//= require bootstrap-min.js
+//= require bootstrap.file-input.js
+//= require mousetrap-min.js
+//= require jquery-visible-min.js
+//= require underscore-min.js
+//= require backbone-min.js
+
 _.templateSettings = {
   interpolate: /\{\{\=(.+?)\}\}/g,
   evaluate: /\{\{(.+?)\}\}/g
@@ -144,8 +152,8 @@ var StoryView = Backbone.View.extend({
 
   storyClicked: function(e) {
     if (e.metaKey || e.ctrlKey || e.which == 2) {
-      var background_tab = window.open(this.model.get("permalink"));
-      background_tab.blur();
+      var backgroundTab = window.open(this.model.get("permalink"));
+      if (backgroundTab) backgroundTab.blur();
       window.focus();
       if (!this.model.get("keep_unread")) this.model.set("is_read", true);
       if (this.model.shouldSave()) this.model.save();

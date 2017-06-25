@@ -63,7 +63,7 @@ describe FeedRepository do
     end
 
     it "returns found feed" do
-      expect(Feed).to receive(:find).with(feed.id).and_return(feed)
+      allow(Feed).to receive(:find).with(feed.id).and_return(feed)
 
       result = FeedRepository.fetch(feed.id)
 

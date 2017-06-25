@@ -3,6 +3,7 @@
 [![Build Status](https://api.travis-ci.org/swanson/stringer.svg?style=flat)](https://travis-ci.org/swanson/stringer)
 [![Code Climate](https://codeclimate.com/github/swanson/stringer.svg?style=flat)](https://codeclimate.com/github/swanson/stringer)
 [![Coverage Status](https://coveralls.io/repos/swanson/stringer/badge.svg?style=flat)](https://coveralls.io/r/swanson/stringer)
+[![Dependency Status](https://gemnasium.com/swanson/stringer.svg)](https://gemnasium.com/swanson/stringer)
 
 ### A self-hosted, anti-social RSS reader.
 
@@ -16,7 +17,7 @@ But it does have keyboard shortcuts and was made with love!
 
 ## Installation
 
-Stringer is a Ruby (2.0.0+) app based on Sinatra, ActiveRecord, PostgreSQL, Backbone.js and DelayedJob.
+Stringer is a Ruby (2.3.0+) app based on Sinatra, ActiveRecord, PostgreSQL, Backbone.js and DelayedJob.
 
 [![Deploy to Heroku](https://cdn.herokuapp.com/deploy/button.svg)](https://heroku.com/deploy)
 
@@ -110,7 +111,7 @@ foreman start
 
 The application will be running on port `5000`.
 
-You can launch an interactive console (ala `rails c`) using `racksh`.
+You can launch an interactive console (a la `rails c`) using `racksh`.
 
 ## Acknowledgements
 
@@ -118,7 +119,15 @@ Most of the heavy-lifting is done by [`feedjira`](https://github.com/feedjira/fe
 
 General sexiness courtesy of [`Twitter Bootstrap`](http://twitter.github.io/bootstrap/) and [`Flat UI`](http://designmodo.github.io/Flat-UI/).
 
+ReenieBeanie Font Copyright &copy; 2010 Typeco (james@typeco.com). Licensed under [SIL Open Font License, 1.1](http://scripts.sil.org/OFL).
+
+Lato Font Copyright &copy; 2010-2011 by tyPoland Lukasz Dziedzic (team@latofonts.com). Licensed under [SIL Open Font License, 1.1](http://scripts.sil.org/OFL).
+
 ## Contact
+
+If you have a question, feature idea, or are running into problems, our preferred method of contact is to open an issue on GitHub. This allows multiple people to weigh in and we can keep everything in one place. Thanks!
+
+## Maintainers
 
 Matt Swanson, [mdswanson.com](http://mdswanson.com), [@_swanson](http://twitter.com/_swanson)
 
