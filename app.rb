@@ -10,6 +10,7 @@ require "will_paginate/active_record"
 require "rack/protection"
 require "sprockets"
 require "sprockets-helpers"
+require "securerandom"
 
 require_relative "app/helpers/authentication_helpers"
 require_relative "app/repositories/user_repository"
