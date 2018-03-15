@@ -26,6 +26,39 @@ describe StoryRepository do
     end
   end
 
+  describe ".extract_url" do
+    it "returns the url" do
+      feed = double(url: "http://github.com")
+      entry = double(url: "https://github.com/swanson/stringer")
+
+      expect(StoryRepository.extract_url(entry, feed)).to eq "https://github.com/swanson/stringer"
+    end
+
+    it "returns the enclosure_url when the url is nil" do
+      feed = double(url: "http://github.com")
+      entry = double(url: nil, enclosure_url: "https://github.com/swanson/stringer")
+
+      expect(StoryRepository.extract_url(entry, feed)).to eq "https://github.com/swanson/stringer"
+    end
+  end
+
+  describe ".extract_title" do
+    let(:entry) do
+    end
+
+    it "returns the title if there is a title" do
+      entry = double(title: "title", summary: "summary")
+
+      expect(StoryRepository.extract_title(entry)).to eq "title"
+    end
+
+    it "returns the summary if there isn't a title" do
+      entry = double(title: "", summary: "summary")
+
+      expect(StoryRepository.extract_title(entry)).to eq "summary"
+    end
+  end
+
   describe ".extract_content" do
     let(:entry) do
       double(url: "http://mdswanson.com",

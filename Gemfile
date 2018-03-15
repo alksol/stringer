@@ -24,8 +24,8 @@ gem "delayed_job", "~> 4.1"
 gem "delayed_job_active_record", "~> 4.1"
 
 gem "feedbag", "~> 0.9.5"
-gem "feedjira", "~> 2.0"
-gem "i18n", "~> 0.9.0"
+gem "feedjira", "~> 2.1.3"
+gem "i18n"
 gem "loofah", "~> 2.0"
 
 gem "nokogiri", "~> 1.6"
