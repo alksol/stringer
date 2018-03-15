@@ -1,16 +1,16 @@
-ruby "2.4.2"
+ruby "2.5.0"
 source "https://rubygems.org"
 
 group :production do
-  gem "pg", "~> 0.21.0"
-  gem "puma", "~> 3.10.0"
+  gem "pg", "~> 1.0.0"
+  gem "puma", "~> 3.11.3"
 end
 
 group :development, :test do
   gem "capybara", "~> 2.6"
   gem "coveralls", "~> 0.8.10", require: false
   gem "faker", "~> 1.6"
-  gem "rack-test", "~> 0.7.0"
+  gem "rack-test", "~> 0.8.3"
   gem "rspec", "~> 3.4"
   gem "rspec-html-matchers", "~> 0.9.1"
   gem "rubocop", "~> 0.38", require: false
@@ -33,7 +33,7 @@ gem "rack-protection", "~> 2.0.0"
 gem "rack-ssl", "~> 1.4"
 gem "racksh", "~> 1.0"
 
-gem "rake", "~> 12.1.0"
+gem "rake", "~> 12.3.0"
 gem "sass"
 gem "sinatra", "~> 2.0.0"
 gem "sinatra-activerecord", "~> 2.0"
