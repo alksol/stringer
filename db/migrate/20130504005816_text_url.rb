@@ -1,4 +1,4 @@
-class TextUrl < ActiveRecord::Migration
+class TextUrl < ActiveRecord::Migration[5.1]
   def up
     change_column :feeds, :url, :text
   end

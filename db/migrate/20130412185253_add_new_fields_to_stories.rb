@@ -1,4 +1,4 @@
-class AddNewFieldsToStories < ActiveRecord::Migration
+class AddNewFieldsToStories < ActiveRecord::Migration[5.1]
   def change
     add_column :stories, :published, :timestamp
     add_column :stories, :is_read, :boolean

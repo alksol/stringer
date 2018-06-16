@@ -1,4 +1,4 @@
-class FixInvalidTitlesWithUnicodeLineEndings < ActiveRecord::Migration
+class FixInvalidTitlesWithUnicodeLineEndings < ActiveRecord::Migration[5.1]
   def up
     Story.find_each do |story|
       unless story.title.nil?

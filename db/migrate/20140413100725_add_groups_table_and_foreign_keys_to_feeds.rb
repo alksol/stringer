@@ -1,4 +1,4 @@
-class AddGroupsTableAndForeignKeysToFeeds < ActiveRecord::Migration
+class AddGroupsTableAndForeignKeysToFeeds < ActiveRecord::Migration[5.1]
   def up
     create_table :groups do |t|
       t.string :name, null: false
