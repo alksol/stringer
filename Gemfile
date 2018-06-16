@@ -11,17 +11,16 @@ group :development do
 end
 
 group :development, :test do
-  gem "capybara", "~> 2.6"
-  gem "coveralls", "~> 0.8.10", require: false
+  gem "capybara", "~> 3.2.1"
   gem "faker", "~> 1.6"
-  gem "rack-test", "~> 0.8.3"
+  gem "rack-test", "~> 1.0.0"
   gem "rspec", "~> 3.4"
   gem "rspec-html-matchers", "~> 0.9.1"
   gem "rubocop", "~> 0.38", require: false
   gem "timecop", "~> 0.9.0"
 end
 
-gem "activerecord", "~> 5.1.1"
+gem "activerecord", "~> 5.2.0"
 gem "bcrypt", "~> 3.1"
 gem "delayed_job", "~> 4.1"
 gem "delayed_job_active_record", "~> 4.1"
