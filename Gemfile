@@ -1,9 +1,13 @@
-ruby "2.5.0"
+ruby "2.5.1"
 source "https://rubygems.org"
 
 group :production do
   gem "pg", "~> 1.0.0"
   gem "puma", "~> 3.11.3"
+end
+
+group :development do
+  gem "sqlite3", "~> 1.3", ">= 1.3.8"
 end
 
 group :development, :test do
@@ -15,7 +19,6 @@ group :development, :test do
   gem "rspec-html-matchers", "~> 0.9.1"
   gem "rubocop", "~> 0.38", require: false
   gem "timecop", "~> 0.9.0"
-  gem "sqlite3"
 end
 
 gem "activerecord", "~> 5.1.1"

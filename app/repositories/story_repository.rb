@@ -82,7 +82,7 @@ class StoryRepository
   end
 
   def self.extract_url(entry, feed)
-    return entry.enclosure_url if entry.url.nil? && entry.enclosure_url.present?
+    return entry.enclosure_url if entry.url.nil? && entry.respond_to?(:enclosure_url)
 
     normalize_url(entry.url, feed.url) unless entry.url.nil?
   end
@@ -96,7 +96,11 @@ class StoryRepository
       sanitized_content = sanitize(entry.summary)
     end
 
-    expand_absolute_urls(sanitized_content, entry.url)
+    if entry.url.present?
+      expand_absolute_urls(sanitized_content, entry.url)
+    else
+      sanitized_content
+    end
   end
 
   def self.extract_title(entry)
