@@ -3,7 +3,7 @@ source "https://rubygems.org"
 
 group :production do
   gem "pg", "~> 1.0.0"
-  gem "puma", "~> 3.11.3"
+  gem "puma", "~> 3.12.0"
 end
 
 group :development do
@@ -11,12 +11,12 @@ group :development do
 end
 
 group :development, :test do
-  gem "capybara", "~> 3.2.1"
-  gem "faker", "~> 1.6"
-  gem "rack-test", "~> 1.0.0"
+  gem "capybara", "~> 3.4.1"
+  gem "faker", "~> 1.9.1"
+  gem "rack-test", "~> 1.1.0"
   gem "rspec", "~> 3.4"
   gem "rspec-html-matchers", "~> 0.9.1"
-  gem "rubocop", "~> 0.38", require: false
+  gem "rubocop", "~> 0.58.2", require: false
   gem "timecop", "~> 0.9.0"
 end
 
@@ -30,21 +30,21 @@ gem "feedjira", "~> 2.1.3"
 gem "i18n"
 gem "loofah", "~> 2.0"
 
-gem "nokogiri", "~> 1.6"
+gem "nokogiri", "~> 1.8.4"
 gem "rack-protection", "~> 2.0.0"
 gem "rack-ssl", "~> 1.4"
 gem "racksh", "~> 1.0"
 
 gem "rake", "~> 12.3.0"
-gem "sass"
+gem "sass", "~> 3.5.7"
 gem "sinatra", "~> 2.0.0"
 gem "sinatra-activerecord", "~> 2.0"
 
 gem "sinatra-contrib", "~> 2.0.0"
 gem "sinatra-flash", "~> 0.3.0"
-gem "sprockets", "~> 3.0"
+gem "sprockets", "~> 3.7.2"
 gem "sprockets-helpers"
 
 gem "thread", "~> 0.2.2"
-gem "uglifier"
+gem "uglifier", "~> 4.1.16"
 gem "will_paginate", "~> 3.1.0"
