@@ -2,7 +2,7 @@ ruby "2.5.1"
 source "https://rubygems.org"
 
 group :production do
-  gem "pg", "~> 1.0.0"
+  gem "pg", "~> 1.1.0"
   gem "puma", "~> 3.12.0"
 end
 
@@ -11,7 +11,7 @@ group :development do
 end
 
 group :development, :test do
-  gem "capybara", "~> 3.4.1"
+  gem "capybara", "~> 3.6.0"
   gem "faker", "~> 1.9.1"
   gem "rack-test", "~> 1.1.0"
   gem "rspec", "~> 3.4"
