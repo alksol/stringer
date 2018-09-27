@@ -36,8 +36,7 @@ gem "rack-ssl", "~> 1.4"
 gem "racksh", "~> 1.0"
 
 gem "rake", "~> 12.3.0"
-gem "sass"
-gem "sassc", "~> 2.0.0"
+gem "sassc-rails", "~> 1.3.0"
 gem "sinatra", "~> 2.0.0"
 gem "sinatra-activerecord", "~> 2.0"
 
