@@ -11,12 +11,12 @@ group :development do
 end
 
 group :development, :test do
-  gem "capybara", "~> 3.6.0"
+  gem "capybara", "~> 3.8.2"
   gem "faker", "~> 1.9.1"
   gem "rack-test", "~> 1.1.0"
   gem "rspec", "~> 3.4"
   gem "rspec-html-matchers", "~> 0.9.1"
-  gem "rubocop", "~> 0.58.2", require: false
+  gem "rubocop", "~> 0.59.2", require: false
   gem "timecop", "~> 0.9.0"
 end
 
@@ -26,7 +26,7 @@ gem "delayed_job", "~> 4.1"
 gem "delayed_job_active_record", "~> 4.1"
 
 gem "feedbag", "~> 0.9.5"
-gem "feedjira", "~> 2.1.3"
+gem "feedjira", "~> 2.2.0"
 gem "i18n"
 gem "loofah", "~> 2.0"
 
@@ -36,7 +36,7 @@ gem "rack-ssl", "~> 1.4"
 gem "racksh", "~> 1.0"
 
 gem "rake", "~> 12.3.0"
-gem "sassc", "~> 1.12.1"
+gem "sassc", "~> 2.0.0"
 gem "sinatra", "~> 2.0.0"
 gem "sinatra-activerecord", "~> 2.0"
 
