@@ -47,3 +47,4 @@ gem "sprockets-helpers"
 gem "thread", "~> 0.2.2"
 gem "uglifier", "~> 4.1.20"
 gem "will_paginate", "~> 3.1.0"
+
