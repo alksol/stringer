@@ -11,12 +11,12 @@ group :development do
 end
 
 group :development, :test do
-  gem "capybara", "~> 3.17.0"
+  gem "capybara", "~> 3.20.0"
   gem "faker", "~> 1.9.1"
   gem "rack-test", "~> 1.1.0"
   gem "rspec", "~> 3.8.0"
   gem "rspec-html-matchers", "~> 0.9.1"
-  gem "rubocop", "~> 0.67.2", require: false
+  gem "rubocop", "~> 0.69.0", require: false
   gem "timecop", "~> 0.9.0"
 end
 
