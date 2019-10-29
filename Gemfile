@@ -26,7 +26,8 @@ gem "delayed_job", "~> 4.1.8"
 gem "delayed_job_active_record", "~> 4.1.4"
 
 gem "feedbag", "~> 0.10"
-gem "feedjira", "~> 2.2.0"
+gem "feedjira", "~> 3.0.0"
+gem "httparty"
 gem "i18n", "~> 1.7.0"
 gem "loofah", "~> 2.3.1"
 

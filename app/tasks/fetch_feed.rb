@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 require "feedjira"
+require "httparty"
 
 require_relative "../repositories/story_repository"
 require_relative "../repositories/feed_repository"
@@ -7,9 +8,10 @@ require_relative "../commands/feeds/find_new_stories"
 
 class FetchFeed
   USER_AGENT = "Stringer (https://github.com/swanson/stringer)".freeze
-  def initialize(feed, parser: Feedjira::Feed, logger: nil)
+  def initialize(feed, parser: Feedjira, client: HTTParty, logger: nil)
     @feed = feed
     @parser = parser
+    @client = client
     @logger = logger
   end
 
@@ -32,7 +34,8 @@ class FetchFeed
   private
 
   def fetch_raw_feed
-    @parser.fetch_and_parse(@feed.url)
+    response = @client.get(@feed.url)
+    @parser.parse(response)
   end
 
   def feed_not_modified
