@@ -15,7 +15,7 @@ class FeedDiscovery
   end
 
   def get_feed_for_url(url, parser, client)
-    response = client.get(url)
+    response = client.get(url).to_s
     feed = parser.parse(response)
     feed.feed_url ||= url
     feed

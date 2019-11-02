@@ -34,7 +34,7 @@ class FetchFeed
   private
 
   def fetch_raw_feed
-    response = @client.get(@feed.url)
+    response = @client.get(@feed.url).to_s
     @parser.parse(response)
   end
 
