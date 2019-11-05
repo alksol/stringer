@@ -12,7 +12,7 @@ end
 
 group :development, :test do
   gem "capybara", "~> 3.29.0"
-  gem "faker", "~> 2.6.0"
+  gem "faker", "~> 2.7.0"
   gem "rack-test", "~> 1.1.0"
   gem "rspec", "~> 3.9.0"
   gem "rspec-html-matchers", "~> 0.9.1"
