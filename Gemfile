@@ -3,7 +3,7 @@ source "https://rubygems.org"
 
 group :production do
   gem "pg", "~> 1.1.4"
-  gem "puma", "~> 4.2.1"
+  gem "puma", "~> 4.3.0"
 end
 
 group :development do
