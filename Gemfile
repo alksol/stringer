@@ -1,8 +1,8 @@
-ruby "2.6.5"
+ruby "2.7.0"
 source "https://rubygems.org"
 
 group :production do
-  gem "pg", "~> 1.1.4"
+  gem "pg", "~> 1.2.2"
   gem "puma", "~> 4.3.0"
 end
 
@@ -11,12 +11,12 @@ group :development do
 end
 
 group :development, :test do
-  gem "capybara", "~> 3.29.0"
-  gem "faker", "~> 2.7.0"
+  gem "capybara", "~> 3.31.0"
+  gem "faker", "~> 2.10.1"
   gem "rack-test", "~> 1.1.0"
   gem "rspec", "~> 3.9.0"
   gem "rspec-html-matchers", "~> 0.9.1"
-  gem "rubocop", "~> 0.76.0", require: false
+  gem "rubocop", "~> 0.79.0", require: false
   gem "timecop", "~> 0.9.0"
 end
 
@@ -26,10 +26,10 @@ gem "delayed_job", "~> 4.1.8"
 gem "delayed_job_active_record", "~> 4.1.4"
 
 gem "feedbag", "~> 0.10"
-gem "feedjira", "~> 3.0.0"
+gem "feedjira", "~> 3.1.0"
 gem "httparty"
-gem "i18n", "~> 1.7.0"
-gem "loofah", "~> 2.3.1"
+gem "i18n", "~> 1.8.2"
+gem "loofah", "~> 2.4.0"
 
 gem "nokogiri", "~> 1.10.4"
 gem "rack-protection", "~> 2.0.7"
