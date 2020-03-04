@@ -16,7 +16,7 @@ group :development, :test do
   gem "rack-test", "~> 1.1.0"
   gem "rspec", "~> 3.9.0"
   gem "rspec-html-matchers", "~> 0.9.1"
-  gem "rubocop", "~> 0.79.0", require: false
+  gem "rubocop", "~> 0.80.1", require: false
   gem "timecop", "~> 0.9.0"
 end
 
@@ -47,5 +47,5 @@ gem "sprockets-helpers"
 
 gem "thread", "~> 0.2.2"
 gem "uglifier", "~> 4.2.0"
-gem "will_paginate", "~> 3.2.1"
+gem "will_paginate", "~> 3.3.0"
 
