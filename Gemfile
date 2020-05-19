@@ -1,4 +1,4 @@
-ruby "2.7.0"
+ruby "2.7.1"
 
 source "https://rubygems.org"
 
@@ -11,13 +11,14 @@ group :development do
   gem "sqlite3", "~> 1.4.0" # 1.4 doesn't work with rails 5.2.2 stuffs
 end
 
+
 group :development, :test do
-  gem "capybara", "~> 3.31.0"
-  gem "faker", "~> 2.10.1"
+  gem "capybara", "~> 3.32.2"
+  gem "faker", "~> 2.11.0"
   gem "rack-test", "~> 1.1.0"
   gem "rspec", "~> 3.9.0"
   gem "rspec-html-matchers", "~> 0.9.1"
-  gem "rubocop", "~> 0.80.1", require: false
+  gem "rubocop", "~> 0.83.0", require: false
   gem "timecop", "~> 0.9.0"
 end
 
@@ -30,7 +31,7 @@ gem "feedbag", "~> 0.10"
 gem "feedjira", "~> 3.1.0"
 gem "httparty"
 gem "i18n", "~> 1.8.2"
-gem "loofah", "~> 2.4.0"
+gem "loofah", "~> 2.5.0"
 
 gem "nokogiri", "~> 1.10.4"
 gem "rack-protection", "~> 2.0.7"
@@ -49,4 +50,3 @@ gem "sprockets-helpers"
 gem "thread", "~> 0.2.2"
 gem "uglifier", "~> 4.2.0"
 gem "will_paginate", "~> 3.3.0"
-
