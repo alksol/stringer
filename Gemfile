@@ -14,15 +14,15 @@ end
 
 group :development, :test do
   gem "capybara", "~> 3.32.2"
-  gem "faker", "~> 2.11.0"
+  gem "faker", "~> 2.12.0"
   gem "rack-test", "~> 1.1.0"
   gem "rspec", "~> 3.9.0"
   gem "rspec-html-matchers", "~> 0.9.1"
-  gem "rubocop", "~> 0.83.0", require: false
+  gem "rubocop", "~> 0.85.0", require: false
   gem "timecop", "~> 0.9.0"
 end
 
-gem "activerecord", "~> 6.0.0"
+gem "activerecord", "~> 6.0.3.1"
 gem "bcrypt", "~> 3.1.13"
 gem "delayed_job", "~> 4.1.8"
 gem "delayed_job_active_record", "~> 4.1.4"
@@ -33,7 +33,7 @@ gem "httparty"
 gem "i18n", "~> 1.8.2"
 gem "loofah", "~> 2.5.0"
 
-gem "nokogiri", "~> 1.10.4"
+gem "nokogiri", "~> 1.11.0rc2"
 gem "rack-protection", "~> 2.0.7"
 gem "rack-ssl", "~> 1.4"
 gem "racksh", "~> 1.0"
