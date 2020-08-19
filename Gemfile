@@ -18,7 +18,7 @@ group :development, :test do
   gem "rack-test", "~> 1.1.0"
   gem "rspec", "~> 3.9.0"
   gem "rspec-html-matchers", "~> 0.9.1"
-  gem "rubocop", "~> 0.86.0", require: false
+  gem "rubocop", "~> 0.89.1", require: false
   gem "timecop", "~> 0.9.0"
 end
 
