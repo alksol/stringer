@@ -18,7 +18,7 @@ group :development, :test do
   gem "rack-test", "~> 1.1.0"
   gem "rspec", "~> 3.9.0"
   gem "rspec-html-matchers", "~> 0.9.1"
-  gem "rubocop", "~> 0.89.1", require: false
+  gem "rubocop", "~> 0.90.0", require: false
   gem "timecop", "~> 0.9.0"
 end
 
@@ -31,18 +31,18 @@ gem "feedbag", "~> 0.10"
 gem "feedjira", "~> 3.1.0"
 gem "httparty"
 gem "i18n", "~> 1.8.2"
-gem "loofah", "~> 2.6.0"
+gem "loofah", "~> 2.7.0"
 
 gem "nokogiri", "~> 1.11.0rc2"
-gem "rack-protection", "~> 2.0.7"
+gem "rack-protection", "~> 2.1.0"
 gem "rack-ssl", "~> 1.4"
 gem "racksh", "~> 1.0"
 
 gem "sassc-rails", "~> 2.1.2"
-gem "sinatra", "~> 2.0.7"
+gem "sinatra", "~> 2.1.0"
 gem "sinatra-activerecord", "~> 2.0.14"
 
-gem "sinatra-contrib", "~> 2.0.7"
+gem "sinatra-contrib", "~> 2.1.0"
 gem "sinatra-flash", "~> 0.3.0"
 gem "sprockets", "~> 4.0.0"
 gem "sprockets-helpers"
