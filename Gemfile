@@ -1,10 +1,10 @@
-ruby "2.7.1"
+ruby "2.7.2"
 
 source "https://rubygems.org"
 
 group :production do
   gem "pg", "~> 1.2.2"
-  gem "puma", "~> 4.3.0"
+  gem "puma", "~> 5.0.4"
 end
 
 group :development do
@@ -14,11 +14,11 @@ end
 
 group :development, :test do
   gem "capybara", "~> 3.33.0"
-  gem "faker", "~> 2.13.0"
+  gem "faker", "~> 2.14.0"
   gem "rack-test", "~> 1.1.0"
-  gem "rspec", "~> 3.9.0"
+  gem "rspec", "~> 3.10.0"
   gem "rspec-html-matchers", "~> 0.9.1"
-  gem "rubocop", "~> 0.90.0", require: false
+  gem "rubocop", "~> 1.2.0", require: false
   gem "timecop", "~> 0.9.0"
 end
 
