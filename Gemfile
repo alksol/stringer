@@ -4,21 +4,20 @@ source "https://rubygems.org"
 
 group :production do
   gem "pg", "~> 1.2.2"
-  gem "puma", "~> 5.0.4"
+  gem "puma", "~> 5.1.0"
 end
 
 group :development do
   gem "sqlite3", "~> 1.4.0" # 1.4 doesn't work with rails 5.2.2 stuffs
 end
 
-
 group :development, :test do
-  gem "capybara", "~> 3.33.0"
-  gem "faker", "~> 2.14.0"
+  gem "capybara", "~> 3.34.0"
+  gem "faker", "~> 2.15.0"
   gem "rack-test", "~> 1.1.0"
   gem "rspec", "~> 3.10.0"
   gem "rspec-html-matchers", "~> 0.9.1"
-  gem "rubocop", "~> 1.2.0", require: false
+  gem "rubocop", "~> 1.4.0", require: false
   gem "timecop", "~> 0.9.0"
 end
 
@@ -31,7 +30,7 @@ gem "feedbag", "~> 0.10"
 gem "feedjira", "~> 3.1.0"
 gem "httparty"
 gem "i18n", "~> 1.8.2"
-gem "loofah", "~> 2.7.0"
+gem "loofah", "~> 2.8.0"
 
 gem "nokogiri", "~> 1.11.0rc2"
 gem "rack-protection", "~> 2.1.0"
