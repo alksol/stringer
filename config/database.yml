@@ -1,14 +1,16 @@
-development:
+default: &default
   adapter: postgresql
-  database: stringer_dev
   encoding: unicode
   pool: 5
+
+development:
+  <<: *default
+  database: stringer_dev
 
 test:
   adapter: sqlite3
   database: db/stringer_test.sqlite
 
 production:
+  <<: *default
   url: <%= ENV["DATABASE_URL"] %>
-  encoding: unicode
-  pool: 5
