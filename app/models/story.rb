@@ -1,7 +1,9 @@
 # frozen_string_literal: true
+
+require_relative "./application_record"
 require_relative "./feed"
 
-class Story < ActiveRecord::Base
+class Story < ApplicationRecord
   belongs_to :feed
 
   validates_uniqueness_of :entry_id, scope: :feed_id

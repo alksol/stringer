@@ -4,7 +4,7 @@ source "https://rubygems.org"
 
 group :production do
   gem "pg", "~> 1.2.2"
-  gem "puma", "~> 5.1.0"
+  gem "puma", "~> 5.2.1"
 end
 
 group :development do
@@ -12,12 +12,14 @@ group :development do
 end
 
 group :development, :test do
-  gem "capybara", "~> 3.34.0"
-  gem "faker", "~> 2.15.0"
+  gem "capybara", "~> 3.35.2"
+  gem "coveralls", "~> 0.7", require: false
+  gem "faker", "~> 2.16.0"
   gem "rack-test", "~> 1.1.0"
   gem "rspec", "~> 3.10.0"
   gem "rspec-html-matchers", "~> 0.9.1"
   gem "rubocop", ">= 1.4.0", require: false
+  gem "simplecov"
   gem "timecop", "~> 0.9.0"
 end
 
@@ -30,7 +32,7 @@ gem "feedbag", "~> 0.10"
 gem "feedjira", "~> 3.1.0"
 gem "httparty"
 gem "i18n", "~> 1.8.2"
-gem "loofah", "~> 2.8.0"
+gem "loofah", "~> 2.9.0"
 
 gem "nokogiri", "1.10.10"
 gem "rack-protection", "~> 2.1.0"

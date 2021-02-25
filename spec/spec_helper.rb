@@ -7,16 +7,15 @@ require "faker"
 require "ostruct"
 require "date"
 
-require "factories/feed_factory"
-require "factories/story_factory"
-require "factories/user_factory"
-require "factories/group_factory"
+require_relative "support/coverage"
+require_relative "factories"
 
 require "./app"
 
 RSpec.configure do |config|
   config.include Rack::Test::Methods
   config.include RSpecHtmlMatchers
+  config.include Factories
 end
 
 def app_require(file)

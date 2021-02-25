@@ -1,4 +1,6 @@
-class Feed < ActiveRecord::Base
+require_relative "./application_record"
+
+class Feed < ApplicationRecord
   has_many :stories, -> { order "published desc" }, dependent: :delete_all
   belongs_to :group
 
@@ -7,7 +9,7 @@ class Feed < ActiveRecord::Base
   enum status: { green: 0, yellow: 1, red: 2 }
 
   def status_bubble
-    return :yellow if status == :red && stories.any?
+    return "yellow" if status == "red" && stories.any?
 
     status
   end
