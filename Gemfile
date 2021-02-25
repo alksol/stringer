@@ -34,7 +34,7 @@ gem "httparty"
 gem "i18n", "~> 1.8.2"
 gem "loofah", "~> 2.9.0"
 
-gem "nokogiri", "1.10.10"
+gem "nokogiri", ">= 1.10.10", "< 2"
 gem "rack-protection", "~> 2.1.0"
 gem "rack-ssl", "~> 1.4"
 gem "racksh", "~> 1.0"
