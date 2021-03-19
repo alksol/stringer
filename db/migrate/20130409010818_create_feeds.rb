@@ -5,7 +5,7 @@ class CreateFeeds < ActiveRecord::Migration[5.1]
       t.string :url
       t.timestamp :last_fetched
 
-      t.timestamps
+      t.timestamps null: false
     end
   end
 end

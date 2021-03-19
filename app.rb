@@ -11,10 +11,13 @@ require "rack/protection"
 require "sprockets"
 require "sprockets-helpers"
 require "securerandom"
-
+require 'sassc-rails'
 require_relative "app/helpers/authentication_helpers"
 require_relative "app/repositories/user_repository"
 require_relative "config/asset_pipeline"
+require "delayed_job_active_record"
+
+Delayed::Worker.backend = :active_record
 
 I18n.load_path += Dir[File.join(File.dirname(__FILE__), "config/locales", "*.yml").to_s]
 I18n.config.enforce_available_locales = false
