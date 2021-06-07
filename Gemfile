@@ -13,20 +13,20 @@ end
 
 group :development do
   gem "sqlite3"
+  gem "rubocop", require: false
+  gem "rubocop-rails", require: false
+  gem "rubocop-rake", require: false
+  gem "rubocop-rspec", require: false
 end
 
 group :development, :test do
   gem "capybara"
-  gem "coveralls", require: false
+  gem "coveralls_reborn", require: false
   gem "faker"
   gem "pry-byebug"
   gem "rack-test"
   gem "rspec"
   gem "rspec-html-matchers"
-  gem "rubocop", require: false
-  gem "rubocop-rails", require: false
-  gem "rubocop-rake", require: false
-  gem "rubocop-rspec", require: false
   gem "shotgun"
   gem "simplecov", "~>0.16.1"
   gem "timecop"

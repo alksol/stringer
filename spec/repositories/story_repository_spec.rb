@@ -257,12 +257,94 @@ describe StoryRepository do
     end
 
     it "does not return stories for other feeds" do
-      feed1 = create_feed
-      feed2 = create_feed
-      create_story(feed: feed2)
+      feed = create_feed
       create_story
 
-      expect(StoryRepository.feed(feed1.id)).to be_empty
+      expect(StoryRepository.feed(feed.id)).to be_empty
+    end
+  end
+
+  describe ".read" do
+    it "returns read stories" do
+      story = create_story(:read)
+
+      expect(StoryRepository.read).to eq([story])
+    end
+
+    it "sorts stories by published" do
+      story1 = create_story(:read, published: 1.day.ago)
+      story2 = create_story(:read, published: 1.hour.ago)
+
+      expect(StoryRepository.read).to eq([story2, story1])
+    end
+
+    it "does not return unread stories" do
+      create_story(:unread)
+
+      expect(StoryRepository.read).to be_empty
+    end
+
+    it "paginates results" do
+      stories =
+        21.times.map { |num| create_story(:read, published: num.days.ago) }
+
+      expect(StoryRepository.read).to eq(stories[0...20])
+      expect(StoryRepository.read(2)).to eq([stories.last])
+    end
+  end
+
+  describe ".starred" do
+    it "returns starred stories" do
+      story = create_story(:starred)
+
+      expect(StoryRepository.starred).to eq([story])
+    end
+
+    it "sorts stories by published" do
+      story1 = create_story(:starred, published: 1.day.ago)
+      story2 = create_story(:starred, published: 1.hour.ago)
+
+      expect(StoryRepository.starred).to eq([story2, story1])
+    end
+
+    it "does not return unstarred stories" do
+      create_story
+
+      expect(StoryRepository.starred).to be_empty
+    end
+
+    it "paginates results" do
+      stories =
+        21.times.map { |num| create_story(:starred, published: num.days.ago) }
+
+      expect(StoryRepository.starred).to eq(stories[0...20])
+      expect(StoryRepository.starred(2)).to eq([stories.last])
+    end
+  end
+
+  describe ".unstarred_read_stories_older_than" do
+    it "returns unstarred read stories older than given number of days" do
+      story = create_story(:read, published: 6.days.ago)
+
+      expect(StoryRepository.unstarred_read_stories_older_than(5)).to eq([story])
+    end
+
+    it "does not return starred stories older than the given number of days" do
+      create_story(:read, :starred, published: 6.days.ago)
+
+      expect(StoryRepository.unstarred_read_stories_older_than(5)).to be_empty
+    end
+
+    it "does not return unread stories older than the given number of days" do
+      create_story(:unread, published: 6.days.ago)
+
+      expect(StoryRepository.unstarred_read_stories_older_than(5)).to be_empty
+    end
+
+    it "does not return stories newer than given number of days" do
+      create_story(:read, published: 4.days.ago)
+
+      expect(StoryRepository.unstarred_read_stories_older_than(5)).to be_empty
     end
   end
 

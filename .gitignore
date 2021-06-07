@@ -21,6 +21,5 @@ _yardoc
 doc/
 bin/
 
-db/*.sqlite
 .DS_Store
 .localeapp
