@@ -5,7 +5,6 @@ source "https://rubygems.org"
 gem "sassc"
 gem "sassc-rails"
 
-
 group :production do
   gem "pg"
   gem "puma"
@@ -28,7 +27,7 @@ group :development, :test do
   gem "rspec"
   gem "rspec-html-matchers"
   gem "shotgun"
-  gem "simplecov", "~>0.16.1"
+  gem "simplecov"
   gem "timecop"
 end
 
@@ -61,4 +60,4 @@ gem "thread"
 gem "uglifier"
 gem "will_paginate"
 
-gem "webrick", "~> 1.7"
+gem "webrick"
