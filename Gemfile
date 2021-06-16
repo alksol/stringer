@@ -22,7 +22,6 @@ group :development, :test do
   gem "capybara"
   gem "coveralls_reborn", require: false
   gem "faker"
-  gem "pry-byebug"
   gem "rack-test"
   gem "rspec"
   gem "rspec-html-matchers"
